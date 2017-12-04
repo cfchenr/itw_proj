@@ -1,35 +1,37 @@
-document.getElementById("menuLeagues").addEventListener('click', function() {
-	var length = $("#content").children().length;
-	for(var i = 0; i < length; i++) {
-		$("#content").children()[0].remove();
-	}
-	$.ajax({
-		url: "http://192.168.160.28/football/api/leagues/",
-		success: function(data) {
-			var table = document.createElement("table");
-			for(var i = 0; i < data.length; i++) {
-				var tr = document.createElement("tr");
-				var td = document.createElement("td");
-				var a  = document.createElement("a");
-				a.setAttribute("href", "#leagues/"+data[i].id);
-				a.setAttribute("id", "team");
-				a.innerText = data[i].name;
-				td.appendChild(a);
-				tr.appendChild(td);
-				table.appendChild(tr);
-			}
-			document.getElementById("content").appendChild(table);
-		},
-		error: function() {
-			alert("Error!");
+$(document).ready(function () {
+	var vm = function() {
+		console.log('ViewModel initiated...');
+		//---Variáveis locais
+		var self = this;
+		var baseUri = 'http://192.168.160.28/football/api/countries';
+		self.className = 'Countries';
+		self.description = '';
+		self.error = ko.observable();
+		self.countries = ko.observableArray([]);
+		//--- Internal functions
+		function ajaxHelper(uri, method, data) {
+			self.error(''); //Clear error message
+			return $.ajax({
+				type: method,
+				url: uri,
+				dataType: 'json',
+				contentType: 'application/json',
+				data: data ? JSON.stringify(data) : null,
+				error: function(jqXHR, textStatus, errorThrown) {
+					console.log("AJAX Call [" + uri + "] Fail...");
+					self.error(errorThrown);
+				}
+			})
 		}
-	})
-})
-document.getElementById("team").addEventListener('click', function() {
-	console.log("THERE");
-	var length = $("#content").children().length;
-	for(var i = 0; i < length; i++) {
-		$("#content").children()[0].remove();
-	}
-	console.log($(this).attr("href"));
+		//--- External functions (accessible outside)
+		self.getCountries = function() {
+			console.log('CALL: getCountries...');
+			ajaxHelper(baseUri, 'GET').done(function(data) {
+				self.countries(data);
+			});
+		};
+		//--- Initial call
+		self.getCountries();
+	};
+	ko.applyBindings(vm);
 });
