@@ -1,0 +1,9 @@
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\bin\itwApp.dll.config
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\bin\itwApp.dll
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\bin\itwApp.pdb
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\obj\Debug\itwApp.csprojResolveAssemblyReference.cache
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\obj\Debug\itwApp.csproj.CoreCompileInputs.cache
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\obj\Debug\itwApp.dll
+H:\OneDrive - Universidade de Aveiro\Matemática - UA\3º Ano - 1º Semestre\ITW\Proj\itwApp\itwApp\obj\Debug\itwApp.pdb
