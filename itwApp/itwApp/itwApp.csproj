@@ -48,6 +48,9 @@
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.7\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,40 +69,7 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="fonts\fontawesome-webfont.eot" />
-    <Content Include="fonts\fontawesome-webfont.ttf" />
-    <Content Include="fonts\fontawesome-webfont.woff" />
-    <Content Include="fonts\fontawesome-webfont.woff2" />
-    <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\Roboto-Light-webfont.eot" />
-    <Content Include="fonts\Roboto-Light-webfont.ttf" />
-    <Content Include="fonts\Roboto-Light-webfont.woff" />
-    <None Include="packages.config" />
-    <Content Include="readme.md" />
-    <Content Include="Scripts\jquery-2.1.4.min.map" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App\main.js" />
-    <Content Include="App\viewmodels\flickr.js" />
-    <Content Include="App\viewmodels\shell.js" />
-    <Content Include="App\viewmodels\welcome.js" />
     <Content Include="App\views\detail.html" />
-    <Content Include="App\views\flickr.html" />
-    <Content Include="App\views\shell.html" />
-    <Content Include="App\views\welcome.html" />
-    <Content Include="config.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -111,23 +81,26 @@
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\ios-startup-image-landscape.png" />
     <Content Include="Content\images\ios-startup-image-portrait.png" />
-    <Content Include="Content\myApp.css" />
+    <Content Include="Content\starterkit.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="fonts\Roboto-Light-webfont.svg" />
-    <Content Include="Global.asax" />
-    <Content Include="icon.png" />
-    <Content Include="index.html" />
-    <Content Include="res\icon\android\icon-36-ldpi.png" />
-    <Content Include="res\icon\android\icon-48-mdpi.png" />
-    <Content Include="res\icon\android\icon-72-hdpi.png" />
-    <Content Include="res\icon\android\icon-96-xhdpi.png" />
-    <Content Include="res\icon\ios\icon-57-2x.png" />
-    <Content Include="res\icon\ios\icon-57.png" />
-    <Content Include="res\icon\ios\icon-72-2x.png" />
-    <Content Include="res\icon\ios\icon-72.png" />
-    <Content Include="res\icon\windows-phone\icon-173.png" />
-    <Content Include="res\icon\windows-phone\icon-48.png" />
+    <Content Include="fonts\Roboto-Light-webfont.eot" />
+    <Content Include="fonts\Roboto-Light-webfont.ttf" />
+    <Content Include="fonts\Roboto-Light-webfont.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <None Include="packages.config" />
     <Content Include="Scripts\almond-custom.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -147,17 +120,58 @@
     <Content Include="Scripts\durandal\transitions\entrance.js" />
     <Content Include="Scripts\durandal\viewEngine.js" />
     <Content Include="Scripts\durandal\viewLocator.js" />
-    <None Include="Scripts\jquery-2.1.4.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.4.js" />
-    <Content Include="Scripts\jquery-2.1.4.min.js" />
-    <Content Include="Scripts\knockout-3.3.0.debug.js" />
-    <Content Include="Scripts\knockout-3.3.0.js" />
+    <None Include="Scripts\jquery-3.2.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.2.1.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.js" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.js" />
+    <Content Include="Scripts\knockout-3.4.2.debug.js" />
+    <Content Include="Scripts\knockout-3.4.2.js" />
     <Content Include="Scripts\r.js" />
     <Content Include="Scripts\require.js" />
+    <Content Include="Views\Durandal\_splash.cshtml" />
+    <Content Include="Views\Durandal\Index.cshtml" />
+    <Content Include="readme.md" />
+    <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.2.1.min.map" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\flickr.js" />
+    <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\welcome.js" />
+    <Content Include="App\views\flickr.html" />
+    <Content Include="App\views\shell.html" />
+    <Content Include="App\views\welcome.html" />
+    <Content Include="config.xml" />
+    <Content Include="Content\myApp.css" />
+    <Content Include="fonts\Roboto-Light-webfont.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="icon.png" />
+    <Content Include="index.html" />
+    <Content Include="res\icon\android\icon-36-ldpi.png" />
+    <Content Include="res\icon\android\icon-48-mdpi.png" />
+    <Content Include="res\icon\android\icon-72-hdpi.png" />
+    <Content Include="res\icon\android\icon-96-xhdpi.png" />
+    <Content Include="res\icon\ios\icon-57-2x.png" />
+    <Content Include="res\icon\ios\icon-57.png" />
+    <Content Include="res\icon\ios\icon-72-2x.png" />
+    <Content Include="res\icon\ios\icon-72.png" />
+    <Content Include="res\icon\windows-phone\icon-173.png" />
+    <Content Include="res\icon\windows-phone\icon-48.png" />
     <Content Include="Scripts\text.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\DurandalBundleConfig.cs" />
+    <Compile Include="App_Start\DurandalConfig.cs" />
+    <Compile Include="Controllers\DurandalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

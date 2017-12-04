@@ -1,51 +1,32 @@
 ﻿define(['plugins/http', 'durandal/app', 'knockout'], function (http, app, ko) {
-    var outsideData;
-    function getDataFor(myLocation) {
-        return http.jsonp('http://api.flickr.com/services/feeds/photos_public.gne',
-            {
-                tags: myLocation, tagmode: 'any', format: 'json',lang:'pt-br'
-            },
-            'jsoncallback').then(function (response) {
-                outsideData.images(response.items);
-            });
-    }
-    //----------------------------------------------------------------------------------------------------------
+    //Note: This module exports an object.
+    //That means that every module that "requires" it will get the same object instance.
+    //If you wish to be able to create multiple instances, instead export a function.
+    //See the "welcome" module for an example of function export.
+
     return {
         displayName: 'Flickr',
         images: ko.observableArray([]),
         activate: function () {
             //the router's activator calls this function and waits for it to complete before proceeding
-        },
-        compositionComplete: function () {
-            outsideData = this;
-            //--- regista uma função para respnder, de futuro, quando 
-            //--- o utilizador mudar o nome da cidade selecionada
-            $('select').change(function () {
-                getDataFor($('select').val());
-            });
-            //--- fim
             if (this.images().length > 0) {
                 return;
             }
-            //--- vai buscar as images referentes à cidade selecionada incialmente
-            getDataFor($('select').val());
+
+            var that = this;
+            return http.jsonp('http://api.flickr.com/services/feeds/photos_public.gne', { tags: 'mount ranier', tagmode: 'any', format: 'json' }, 'jsoncallback').then(function(response) {
+                that.images(response.items);
+            });
         },
-        select: function (item) {
+        select: function(item) {
             //the app model allows easy display of modal dialogs by passing a view model
             //views are usually located by convention, but you an specify it as well with viewUrl
             item.viewUrl = 'views/detail';
             app.showDialog(item);
         },
-        splitTags: function (tags) {
-            var arr = tags.split(' ');
-            var retVal = "Tags: ";
-            for (x = 0; x < arr.length; x++) {
-                if (x > 0)
-                    retVal += " #" + arr[x] + ";";
-                else
-                    retVal += "#" + arr[x] + ";";
-            }
-            return retVal;
+        canDeactivate: function () {
+            //the router's activator calls this function to see if it can leave the screen
+            return app.showMessage('Are you sure you want to leave this page?', 'Navigate', ['Yes', 'No']);
         }
     };
 });
