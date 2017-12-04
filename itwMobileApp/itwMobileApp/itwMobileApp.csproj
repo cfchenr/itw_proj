@@ -119,7 +119,6 @@
     <Content Include="icon.png" />
     <Content Include="images\logo.fw.png" />
     <Content Include="index.html" />
-    <Content Include="itwMobileApp.csproj.user" />
     <Content Include="res\icon\android\icon-36-ldpi.png" />
     <Content Include="res\icon\android\icon-48-mdpi.png" />
     <Content Include="res\icon\android\icon-72-hdpi.png" />
