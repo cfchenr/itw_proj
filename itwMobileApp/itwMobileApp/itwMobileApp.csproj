@@ -66,7 +66,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\itwMobileApp.dll.config" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="fonts\fontawesome-webfont.eot" />
@@ -81,8 +80,6 @@
     <Content Include="fonts\Roboto-Light-webfont.eot" />
     <Content Include="fonts\Roboto-Light-webfont.ttf" />
     <Content Include="fonts\Roboto-Light-webfont.woff" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\itwMobileApp.csprojResolveAssemblyReference.cache" />
     <None Include="packages.config" />
     <Content Include="readme.md" />
     <Content Include="Scripts\jquery-2.1.4.min.map" />
@@ -102,17 +99,6 @@
     <Content Include="App\views\flickr.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\views\welcome.html" />
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
-    <Content Include="bin\itwMobileApp.dll" />
-    <Content Include="bin\itwMobileApp.pdb" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
-    <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
-    <Content Include="bin\WebActivator.dll" />
-    <Content Include="bin\WebGrease.dll" />
     <Content Include="config.xml" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -134,9 +120,6 @@
     <Content Include="images\logo.fw.png" />
     <Content Include="index.html" />
     <Content Include="itwMobileApp.csproj.user" />
-    <Content Include="obj\Debug\itwMobileApp.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\itwMobileApp.dll" />
-    <Content Include="obj\Debug\itwMobileApp.pdb" />
     <Content Include="res\icon\android\icon-36-ldpi.png" />
     <Content Include="res\icon\android\icon-48-mdpi.png" />
     <Content Include="res\icon\android\icon-72-hdpi.png" />
@@ -180,14 +163,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="obj\Debug\TempPE\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
