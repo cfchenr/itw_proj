@@ -14,23 +14,32 @@
 <body>
 	<div id="navbar"></div>
 	<div class="container">
-		<table class="table table-striped">
-			<thead>
-				<div class="page-header">
-					<h2 data-bind="text: className"></h2>
-				</div>
-			</thead>
-			<tbody>		
-				<!-- ko foreach: countries -->
-					<tr>
-						<td scope="row">
-							<i class="fa fa-flag-o"></i>
-							<a data-bind="html: name, attr:{href: 'country.html?id='+id, title: name}"></a>
-						</td>
-					</tr>
+		<div class="page-header">
+			<!-- ko foreach: team -->
+			<h2 data-bind="text: team_long_name"></h2>
+			<!-- /ko -->
+			<h2>Matches</h2>
+		</div>
+		<nav class="nav nav-tabs" id="myTab" role="tablist">
+			<!-- ko foreach: matches -->
+				<!-- ko if: $index() == 0 -->
+					<a class="nav-item nav-link active" data-bind="text: Label, attr:{id: Label+'-tab', href: '#'+Label, 'aria-controls': Label}" data-toggle="tab" role="tab" aria-selected="true"></a>
 				<!-- /ko -->
-			</tbody>
-		</table>
+				<!-- ko if: $index() != 0 -->
+					<a class="nav-item nav-link" data-bind="text: Label, attr:{id: Label+'-tab', href: '#'+Label, 'aria-controls': Label}" data-toggle="tab" role="tab" aria-selected="false"></a>
+				<!-- /ko -->
+			<!-- /ko -->
+		</nav>
+		<div class="tab-content" id="nav-tabContent">
+			<!-- ko foreach: matches -->
+				<!-- ko if: $index() == 0 -->
+					<div class="tab-pane fade show active" data-bind="text: Label, attr: {id: Label, 'aria-labelledby': Label+'-tab'}" role="tabpanel" ></div>
+				<!-- /ko -->
+				<!-- ko if: $index() != 0 -->
+					<div class="tab-pane fade" data-bind="text: Label, attr: {id: Label, 'aria-labelledby': Label+'-tab'}" role="tabpanel" ></div>
+				<!-- /ko -->
+			<!-- /ko -->
+		</div>
 		<div class="clearfix"></div>
 		<!-- ko if:error -->
 		<div class="alert alert-danger" data-bind="html:error"></div>
@@ -45,6 +54,11 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 	<script src="./main.js"></script>
-	<script src="./countries.js"></script>
+	<script src="./team.js"></script>
+	<script>
+		$(function () {
+			$('#myTab a:last').tab('show')
+		})
+	</script>
 </body>
 </html>

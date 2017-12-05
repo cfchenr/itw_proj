@@ -4,12 +4,11 @@ $(document).ready(function () {
 		//---Variáveis locais
 		var self = this;
 		var url = window.location.href;
-		var countryID = url.split("=")[1];
-		var baseUri = 'http://192.168.160.28/football/api/countries/'+ countryID;
-		self.className = 'Countries';
-		self.description = '';
+		var leagueID = url.split("=")[1];
+		var baseUri = 'http://192.168.160.28/football/api/leagues/'+ leagueID;
+		self.className = 'League';
+		self.description = 'This page serves to view league details.';
 		self.error = ko.observable();
-		self.country = ko.observableArray([]);
 		self.league = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
@@ -27,18 +26,15 @@ $(document).ready(function () {
 			})
 		}
 		//--- External functions (accessible outside)
-		self.getCountry = function() {
-			console.log('CALL: getCountry...');
+		self.getLeague = function() {
+			console.log('CALL: getLeague...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				self.country(data);
-				baseUri = 'http://192.168.160.28/football/api/countries/countryLeagues/'+data.id;
-				ajaxHelper(baseUri, 'GET').done(function(data) {
-					self.league(data);
-				});
+				self.className = data.countryName + " | " + data.name;
+				self.league(data);
 			});
 		};
 		//--- Initial call
-		self.getCountry();
+		self.getLeague();
 	};
 	ko.applyBindings(vm);
 });

@@ -3,11 +3,14 @@ $(document).ready(function () {
 		console.log('ViewModel initiated...');
 		//---Variáveis locais
 		var self = this;
-		var baseUri = 'http://192.168.160.28/football/api/countries/';
-		self.className = 'Countries';
-		self.description = 'This page serves to view the list of countries with soccer leagues.';
+		var url = window.location.href;
+		var teamID = url.split("=")[1];
+		var baseUri = 'http://192.168.160.28/football/api/teams/'+ teamID;
+		self.className = 'League';
+		self.description = 'This page serves to view team details.';
 		self.error = ko.observable();
-		self.countries = ko.observableArray([]);
+		self.team = ko.observableArray([]);
+		self.matches = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -24,14 +27,19 @@ $(document).ready(function () {
 			})
 		}
 		//--- External functions (accessible outside)
-		self.getCountries = function() {
-			console.log('CALL: getCountries...');
+		self.getTeam = function() {
+			console.log('CALL: getTeam...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				self.countries(data);
+				self.team(data);
+				console.log('CALL: getMatches...');
+				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
+				ajaxHelper(baseUri, 'GET').done(function(data) {
+					self.matches(data);
+				});
 			});
 		};
 		//--- Initial call
-		self.getCountries();
+		self.getTeam();
 	};
 	ko.applyBindings(vm);
 });

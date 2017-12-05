@@ -7,7 +7,7 @@ $(document).ready(function () {
 		var countryID = url.split("=")[1];
 		var baseUri = 'http://192.168.160.28/football/api/countries/'+ countryID;
 		self.className = 'Countries';
-		self.description = '';
+		self.description = 'This page serves to view the list of soccer leagues in the country.';
 		self.error = ko.observable();
 		self.country = ko.observableArray([]);
 		self.league = ko.observableArray([]);
@@ -31,6 +31,7 @@ $(document).ready(function () {
 			console.log('CALL: getCountry...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
 				self.country(data);
+				console.log('CALL: getCountryLeagues...');
 				baseUri = 'http://192.168.160.28/football/api/countries/countryLeagues/'+data.id;
 				ajaxHelper(baseUri, 'GET').done(function(data) {
 					self.league(data);

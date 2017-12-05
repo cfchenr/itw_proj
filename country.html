@@ -14,19 +14,30 @@
 <body>
 	<div id="navbar"></div>
 	<div class="container">
-		<div class="page-header">
-			<!-- ko foreach: country -->
-			<h2 data-bind="text: name"></h2>
-			<!-- /ko -->
-			<!-- ko foreach: league -->
-			<div><i class="fa fa-map-marker"></i> <a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a></div>
-			<!-- /ko -->
-			<div class="clearfix"></div>
-			<!-- ko if:error -->
-			<div class="bs-callout bs-callout-danger" data-bind="html:error"></div>
-			<!-- /ko -->
-			<div class="bs-callout bs-callout-info" data-bind="html:description"></div>
-		</div>
+		<table class="table table-striped">
+			<thead>
+				<div class="page-header">
+					<!-- ko foreach: country -->
+					<h2 data-bind="text: name"></h2>
+					<!-- /ko -->
+				</div>
+			</thead>
+			<tbody>		
+				<!-- ko foreach: league -->
+					<tr>
+						<td scope="row">
+							<i class="fa fa-flag-o"></i>
+							<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+						</td>
+					</tr>
+				<!-- /ko -->
+			</tbody>
+		</table>
+		<div class="clearfix"></div>
+		<!-- ko if:error -->
+		<div class="alert alert-danger" data-bind="html:error"></div>
+		<!-- /ko -->
+		<div class="alert alert-success" data-bind="html:description"></div>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
