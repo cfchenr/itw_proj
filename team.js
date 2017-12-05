@@ -10,7 +10,7 @@ $(document).ready(function () {
 		self.description = 'This page serves to view team details.';
 		self.error = ko.observable();
 		self.team = ko.observableArray([]);
-		self.matches = ko.observableArray([]);
+		self.seasons = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -33,7 +33,8 @@ $(document).ready(function () {
 				console.log('CALL: getMatches...');
 				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
 				ajaxHelper(baseUri, 'GET').done(function(data) {
-					self.matches(data);
+					console.log(teamID);
+					self.seasons(data);
 				});
 			});
 		};

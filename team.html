@@ -18,12 +18,12 @@
 			<!-- ko foreach: team -->
 			<h2 data-bind="text: team_long_name"></h2>
 			<!-- /ko -->
-			<h2>Matches</h2>
+			<h2>Seasons</h2>
 		</div>
 		<div class="container-fluid">
 			
 			<div id="accordion" role="tablist">
-				<!-- ko foreach: matches -->
+				<!-- ko foreach: seasons -->
 					<div class="card">
 						<!-- ko if: $index()==0 -->
 							<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
