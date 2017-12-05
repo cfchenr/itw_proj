@@ -35,11 +35,14 @@ $(document).ready(function () {
 				console.log('CALL: getSeasons...');
 				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
 				ajaxHelper(baseUri, 'GET').done(function(data) {
-					
 					self.seasons(data);
+					var aux = "[";
 					for(var i = 0; i < self.seasons().length; i++) {
-						self.seasonsIdx[i] = self.seasons()[i].Label.split("/")[1].charAt(2) + self.seasons()[i].Label.split("/")[1].charAt(3);
+						aux +='{"season":"'+self.seasons()[i].Label.split("/")[1].charAt(2) + self.seasons()[i].Label.split("/")[1].charAt(3)+'"}';
+						if(i < self.seasons().length-1) aux += ",";
 					}
+					aux += "]"
+					self.seasonsIdx(JSON.parse(aux));
 				});
 			});
 		};
