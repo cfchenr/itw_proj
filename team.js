@@ -38,7 +38,7 @@ $(document).ready(function () {
 					self.seasons(data);
 					var aux = "[";
 					for(var i = 0; i < self.seasons().length; i++) {
-						aux +='{"season":"'+self.seasons()[i].Label.split("/")[1].charAt(2) + self.seasons()[i].Label.split("/")[1].charAt(3)+'"}';
+						aux +='{"season":"'+self.seasons()[i].Label.split("/")[1].charAt(2) + self.seasons()[i].Label.split("/")[1].charAt(3)+'","team_fifa_api_id":"'+self.team().team_fifa_api_id+'"}';
 						if(i < self.seasons().length-1) aux += ",";
 					}
 					aux += "]"
