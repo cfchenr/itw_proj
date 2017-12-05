@@ -11,6 +11,7 @@ $(document).ready(function () {
 		self.error = ko.observable();
 		self.team = ko.observableArray([]);
 		self.seasons = ko.observableArray([]);
+		self.seasonsIdx = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -30,11 +31,15 @@ $(document).ready(function () {
 		self.getTeam = function() {
 			console.log('CALL: getTeam...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				console.log('CALL: getMatches...');
+				self.team(data);
+				console.log('CALL: getSeasons...');
 				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
 				ajaxHelper(baseUri, 'GET').done(function(data) {
-					console.log(teamID);
+					
 					self.seasons(data);
+					for(var i = 0; i < self.seasons().length; i++) {
+						self.seasonsIdx[i] = self.seasons()[i].Label.split("/")[1].charAt(2) + self.seasons()[i].Label.split("/")[1].charAt(3);
+					}
 				});
 			});
 		};
