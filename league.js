@@ -29,7 +29,6 @@ $(document).ready(function () {
 		self.getLeague = function() {
 			console.log('CALL: getLeague...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				console.log(data);
 				self.className = data.countryName + " | " + data.name;
 				self.league(data);
 			});
