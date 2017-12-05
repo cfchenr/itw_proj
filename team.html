@@ -20,25 +20,255 @@
 			<!-- /ko -->
 			<h2>Matches</h2>
 		</div>
-		<nav class="nav nav-tabs" id="myTab" role="tablist">
-			<!-- ko foreach: matches -->
-				<!-- ko if: $index() == 0 -->
-					<a class="nav-item nav-link active" data-bind="text: Label, attr:{id: Label+'-tab', href: '#'+Label, 'aria-controls': Label}" data-toggle="tab" role="tab" aria-selected="true"></a>
+		<div class="container-fluid">
+			
+			<div id="accordion" role="tablist">
+				<!-- ko foreach: matches -->
+					<div class="card">
+						<!-- ko if: $index()==0 -->
+							<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
+								<h5 class="mb-0">
+									<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}" aria-expanded="true"></a>
+								</h5>
+							</div>
+							<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse show" data-parent="#accordion">
+								<div class="card-body">
+									<!-- ko with: Attributes -->
+										<p>Speed</p>
+										<div>
+											<p data-bind="text: buildupplayspeedclass"></p>
+											<div class="progress">
+												<!-- ko if: buildupplayspeed > 75 -->
+													<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+												<!-- /ko -->
+												<!-- ko if: buildupplayspeed <= 75 -->
+													<!-- ko if: buildupplayspeed > 50 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: buildupplayspeed <= 50 -->
+														<!-- ko if: buildupplayspeed > 25 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: buildupplayspeed <= 25 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+													<!-- /ko -->
+												<!-- /ko -->
+											</div>
+										</div>
+										<p>Dribbling</p>
+										<div>
+											<div>
+												<p data-bind="text: buildupplaydribblingclass"></p>
+												<div class="progress">
+													<!-- ko if: buildupplaydribbling > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaydribbling}, style: {width: buildupplaydribbling+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: buildupplaydribbling <= 75 -->
+														<!-- ko if: buildupplaydribbling > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaydribbling}, style: {width: buildupplaydribbling+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: buildupplaydribbling <= 50 -->
+															<!-- ko if: buildupplaydribbling > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaydribbling}, style: {width: buildupplaydribbling+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: buildupplaydribbling <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaydribbling}, style: {width: buildupplaydribbling+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p>Passing</p>
+										<div>
+											<div>
+												<p data-bind="text: buildupplaypassingclass"></p>
+												<div class="progress">
+													<!-- ko if: buildupplaypassing > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaypassing}, style: {width: buildupplaypassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: buildupplaypassing <= 75 -->
+														<!-- ko if: buildupplaypassing > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaypassing}, style: {width: buildupplaypassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: buildupplaypassing <= 50 -->
+															<!-- ko if: buildupplaypassing > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaypassing}, style: {width: buildupplaypassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: buildupplaypassing <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplaypassing}, style: {width: buildupplaypassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p data-bind="text: buildupplaypositioningclass"></p>
+										<p>Chance creation by passing</p>
+										<div>
+											<div>
+												<p data-bind="text: chancecreationpassingclass"></p>
+												<div class="progress">
+													<!-- ko if: chancecreationpassing > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationpassing}, style: {width: chancecreationpassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: chancecreationpassing <= 75 -->
+														<!-- ko if: chancecreationpassing > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationpassing}, style: {width: chancecreationpassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: chancecreationpassing <= 50 -->
+															<!-- ko if: chancecreationpassing > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationpassing}, style: {width: chancecreationpassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: chancecreationpassing <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationpassing}, style: {width: chancecreationpassing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p>Chance creation by crossing</p>
+										<div>
+											<div>
+												<p data-bind="text: chancecreationcrossingclass"></p>
+												<div class="progress">
+													<!-- ko if: chancecreationcrossing > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationcrossing}, style: {width: chancecreationcrossing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: chancecreationcrossing <= 75 -->
+														<!-- ko if: chancecreationcrossing > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationcrossing}, style: {width: chancecreationcrossing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: chancecreationcrossing <= 50 -->
+															<!-- ko if: chancecreationcrossing > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationcrossing}, style: {width: chancecreationcrossing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: chancecreationcrossing <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationcrossing}, style: {width: chancecreationcrossing+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p>Chance creation by shooting</p>
+										<div>
+											<div>
+												<p data-bind="text: chancecreationshootingclass"></p>
+												<div class="progress">
+													<!-- ko if: chancecreationshooting > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationshooting}, style: {width: chancecreationshooting+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: chancecreationshooting <= 75 -->
+														<!-- ko if: chancecreationshooting > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationshooting}, style: {width: chancecreationshooting+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: chancecreationshooting <= 50 -->
+															<!-- ko if: chancecreationshooting > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationshooting}, style: {width: chancecreationshooting+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: chancecreationshooting <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': chancecreationshooting}, style: {width: chancecreationshooting+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p data-bind="text: chancecreationpositioningclass"></p>
+										<hr>
+										<p>Defence pressure</p>
+										<div>
+											<div>
+												<p data-bind="text: defencepressureclass"></p>
+												<div class="progress">
+													<!-- ko if: defencepressure > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': defencepressure}, style: {width: defencepressure+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: defencepressure <= 75 -->
+														<!-- ko if: defencepressure > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': defencepressure}, style: {width: defencepressure+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: defencepressure <= 50 -->
+															<!-- ko if: defencepressure > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': defencepressure}, style: {width: defencepressure+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: defencepressure <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': defencepressure}, style: {width: defencepressure+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p>Defence aggression</p>
+										<div>
+											<div>
+												<p data-bind="text: defenceaggressionclass"></p>
+												<div class="progress">
+													<!-- ko if: defenceaggression > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': defenceaggression}, style: {width: defenceaggression+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: defenceaggression <= 75 -->
+														<!-- ko if: defenceaggression > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': defenceaggression}, style: {width: defenceaggression+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: defenceaggression <= 50 -->
+															<!-- ko if: defenceaggression > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': defenceaggression}, style: {width: defenceaggression+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: defenceaggression <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': defenceaggression}, style: {width: defenceaggression+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p>Defence team width</p>
+										<div>
+											<div>
+												<p data-bind="text: defenceteamwidthclass"></p>
+												<div class="progress">
+													<!-- ko if: defenceteamwidth > 75 -->
+														<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': defenceteamwidth}, style: {width: defenceteamwidth+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<!-- /ko -->
+													<!-- ko if: defenceteamwidth <= 75 -->
+														<!-- ko if: defenceteamwidth > 50 -->
+															<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': defenceteamwidth}, style: {width: defenceteamwidth+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+														<!-- /ko -->
+														<!-- ko if: defenceteamwidth <= 50 -->
+															<!-- ko if: defenceteamwidth > 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': defenceteamwidth}, style: {width: defenceteamwidth+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+															<!-- ko if: defenceteamwidth <= 25 -->
+																<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': defenceteamwidth}, style: {width: defenceteamwidth+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+															<!-- /ko -->
+														<!-- /ko -->
+													<!-- /ko -->
+												</div>
+											</div>
+										</div>
+										<p data-bind="text: defencedefenderlineclass"></p>
+									<!-- /ko -->
+								</div>
+							</div>
+						<!-- /ko -->
+						<!-- ko if: $index()!=0 -->
+							<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
+								<h5 class="mb-0">
+									<a data-toggle="collapse" data-bind="text:  Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}" aria-expanded="false"></a>
+								</h5>
+							</div>
+							<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse" data-parent="#accordion">
+								<div class="card-body" data-bind="text: Label"></div>
+							</div>
+						<!-- /ko -->
+					</div>
 				<!-- /ko -->
-				<!-- ko if: $index() != 0 -->
-					<a class="nav-item nav-link" data-bind="text: Label, attr:{id: Label+'-tab', href: '#'+Label, 'aria-controls': Label}" data-toggle="tab" role="tab" aria-selected="false"></a>
-				<!-- /ko -->
-			<!-- /ko -->
-		</nav>
-		<div class="tab-content" id="nav-tabContent">
-			<!-- ko foreach: matches -->
-				<!-- ko if: $index() == 0 -->
-					<div class="tab-pane fade show active" data-bind="text: Label, attr: {id: Label, 'aria-labelledby': Label+'-tab'}" role="tabpanel" ></div>
-				<!-- /ko -->
-				<!-- ko if: $index() != 0 -->
-					<div class="tab-pane fade" data-bind="text: Label, attr: {id: Label, 'aria-labelledby': Label+'-tab'}" role="tabpanel" ></div>
-				<!-- /ko -->
-			<!-- /ko -->
+			</div>	
 		</div>
 		<div class="clearfix"></div>
 		<!-- ko if:error -->
