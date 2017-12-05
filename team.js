@@ -30,7 +30,7 @@ $(document).ready(function () {
 		self.getTeam = function() {
 			console.log('CALL: getTeam...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				self.team(data);
+				console.log(data);
 				console.log('CALL: getMatches...');
 				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
 				ajaxHelper(baseUri, 'GET').done(function(data) {

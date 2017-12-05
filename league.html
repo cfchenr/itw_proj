@@ -27,8 +27,14 @@
 					<!-- ko foreach: teams -->
 						<tr>
 							<td scope="row">
-								<i class="fa fa-flag-o"></i>
-								<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
+								<!-- ko if: team_fifa_api_id -->
+									<img width="32px"; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+									<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
+								<!-- /ko -->
+								<!-- ko if: !team_fifa_api_id -->
+									<i class="fa fa-shield fa-2x"></i>
+									<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
+								<!-- /ko -->
 							</td>
 						</tr>
 					<!-- /ko -->

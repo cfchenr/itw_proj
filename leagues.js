@@ -27,6 +27,7 @@ $(document).ready(function () {
 		self.getLeagues = function() {
 			console.log('CALL: getCountries...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
+				console.log(data);
 				self.leagues(data);
 			});
 		};
