@@ -1,25 +1,28 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<title>Massau Football</title>
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" 
-	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
+	 crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" type="text/css" href="appStyle.css">
 	<style>
 		#chartdiv {
 			width: 100%;
 			height: 350px;
-		}				
+		}
 	</style>
 	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
 	<script src="https://www.amcharts.com/lib/3/radar.js"></script>
 	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 </head>
+
 <body>
 	<div id="navbar"></div>
 	<div class="container">
@@ -27,102 +30,264 @@
 			<thead>
 				<div class="page-header">
 					<!-- ko foreach: team -->
-						<img width="54px"; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
-						<h1 data-bind="text: team_long_name"></h1>
+					<!-- ko if: team_fifa_api_id -->
+					<img width="54px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+					<h1 data-bind="text: team_long_name"></h1>
+					<!-- /ko -->
+					<!-- ko if: !team_fifa_api_id -->
+					<img width="54px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
+					<h1 data-bind="text: team_long_name"></h1>
+					<!-- /ko -->
 					<!-- /ko -->
 				</div>
 			</thead>
-			<tbody>		
+			<tbody>
 				<tr>
 					<div id="chartdiv"></div>
 					<td scope="row">
 						<div id="accordion" role="tablist">
 							<!-- ko foreach: seasons -->
-								<div class="card">					
-									<!-- ko if: $index()==0 -->
-										<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
-											<h5 class="mb-0">
-												<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}" aria-expanded="true"></a>
-											</h5>
-										</div>
-										<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse show" data-parent="#accordion">
-											<div class="card-body">
-												<!-- ko with: Attributes -->
-													<div class="row">
-														<div class="col-md-12 text-center">
-															<!-- ko foreach: seasonsIdx -->
-																<!-- ko if:$index() == $parentContext.$index() -->
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
-																	<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
-																<!-- /ko -->
-															<!-- /ko -->
-														</div>
-													</div>
-													<br>
-													<hr>
-													<br>
-												<!-- /ko -->
-												<!-- ko foreach: Matches -->
-														<div class="row">
-															<div class="text-left">
-																<!-- ko with: home_team -->
-																	<!-- ko with: $parent.away_team -->
-																		<a data-bind="text: 'Jornada ' + $parents[1].stage" style="display: inline"></a>
-																		<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
-																		<a data-bind="text: ' ('+ $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ', attr:{href: 'match?id=' + $parents[1].id}"></a>
-																		<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>
-												<!-- /ko -->
-											</div>
-										</div>
-									<!-- /ko -->
-									<!-- ko if: $index()!=0 -->
-										<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
-											<h5 class="mb-0">
-												<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}" aria-expanded="false"></a>
-											</h5>
-										</div>
-										<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse" data-parent="#accordion">
-											<div class="card-body">
-												<!-- ko with: Attributes -->
-													<div class="row">
-														<div class="col-md-12 text-center">
-															<!-- ko foreach: seasonsIdx -->
-																<!-- ko if:$index() == $parentContext.$index() -->
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
-																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
-																	<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
-																<!-- /ko -->
-															<!-- /ko -->
-														</div>
-													</div>
-													<br>
-													<hr>
-													<br>
-												<!-- /ko -->
-												<!-- ko foreach: Matches -->
-														<div class="row">
-															<div class="text-left">
-																<!-- ko with: home_team -->
-																	<!-- ko with: $parent.away_team -->
-																		<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>
-												<!-- /ko -->
-											</div>
-										</div>
-									<!-- /ko -->
+							<div class="card text-center">
+								<!-- ko if: $index()==0 -->
+								<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
+									<h5 class="mb-0">
+										<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}"
+										 aria-expanded="true"></a>
+									</h5>
 								</div>
+								<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse show"
+								 data-parent="#accordion">
+									<div class="card-footer">
+										<!-- ko with: Attributes -->
+										<div class="row">
+											<div class="col-md-12 text-center" style="display: contents;">
+												<!-- ko foreach: seasonsIdx -->
+												<!-- ko if:$index() == $parentContext.$index() -->
+												<!-- ko if:!(team_fifa_api_id>0) -->
+												<table class="table table-striped table-bordered table-hover table-condensed">
+													<thead>
+														<tr>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
+															</td>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
+															</td>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
+															</td>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td scope="row">
+																<h4 class="card-title">Home kit</h4>
+															</td>
+															<td scope="row">
+																<h4 class="card-title">Away kit</h4>
+															</td>
+															<td scope="row">
+																<h4 class="card-title">Goalkeeper kit</h4>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+												<!-- /ko -->
+												<!-- ko if:team_fifa_api_id -->
+												<table class="table table-striped table-bordered table-hover table-condensed">
+													<thead>
+														<tr>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
+															</td>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>
+															</td>
+															<td>
+																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>
+															</td>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td scope="row">
+																<h4 class="card-title">Home kit</h4>
+															</td>
+															<td scope="row">
+																<h4 class="card-title">Away kit</h4>
+															</td>
+															<td scope="row">
+																<h4 class="card-title">Goalkeeper kit</h4>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+												<!-- /ko -->
+												<!-- /ko -->
+												<!-- /ko -->
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+										<!-- /ko -->
+										<div class="row">
+											<div class="container">
+												<table class="table table-striped table-bordered table-hover table-condensed">
+													<thead>
+														<div class="page-header">
+															<h3>Stage</h3>
+														</div>
+													</thead>
+													<tbody>
+														<!-- ko foreach: Matches -->
+														<!-- ko with: home_team -->
+														<!-- ko with: $parent.away_team -->
+														<tr>
+															<td scope="row" class="text-center">
+																<a data-bind="text: $parents[1].stage" style="display: inline"></a>
+																<td class="text-center">
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																</td>
+																<td class="text-center">
+																	<a data-bind="attr:{href: 'match.html?id=' + $parents[1].id}">
+																		<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																		<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																		<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																	</a>
+																</td>
+																<td class="text-center">
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																</td>
+															</td>
+														</tr>
+														<!-- /ko -->
+														<!-- /ko -->
+														<!-- /ko -->
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /ko -->
+								<!-- ko if: $index()!=0 -->
+								<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
+									<h5 class="mb-0">
+										<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}"
+										 aria-expanded="false"></a>
+									</h5>
+								</div>
+								<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse"
+								 data-parent="#accordion">
+									<div class="card-footer">
+										<!-- ko with: Attributes -->
+										<div class="row">
+											<div class="col-md-12 text-center">
+												<!-- ko foreach: seasonsIdx -->
+												<!-- ko if:$index() == $parentContext.$index() -->
+												<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
+												<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>
+												<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>
+												<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+												<!-- /ko -->
+												<!-- /ko -->
+											</div>
+										</div>
+										<br>
+										<hr>
+										<br>
+										<!-- /ko -->
+										<div class="row">
+											<div class="container">
+												<table class="table table-striped table-bordered table-hover table-condensed">
+													<thead>
+														<div class="page-header">
+															<h3>Stage</h3>
+														</div>
+													</thead>
+													<tbody>
+														<!-- ko foreach: Matches -->
+														<!-- ko with: home_team -->
+														<!-- ko with: $parent.away_team -->
+														<tr>
+															<td scope="row" class="text-center">
+																<a data-bind="text: $parents[1].stage" style="display: inline"></a>
+																<td class="text-center">
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																</td>
+																<td class="text-center">
+																	<a data-bind="attr:{href: 'match.html?id=' + $parents[1].id}">
+																		<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																		<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																		<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].home_team_goal"></span>
+																		<span data-bind="text: 'vs'"></span>
+																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].away_team_goal"></span>
+																		<!-- /ko -->
+																	</a>
+																</td>
+																<td class="text-center">
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																</td>
+															</td>
+														</tr>
+														<!-- /ko -->
+														<!-- /ko -->
+														<!-- /ko -->
+													</tbody>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+								<!-- /ko -->
+								<!-- /ko -->
+							</div>
 							<!-- /ko -->
-						</div>	
+						</div>
 					</td>
 				</tr>
 			</tbody>
@@ -132,15 +297,18 @@
 		<div class="alert alert-danger" data-bind="html:error"></div>
 		<!-- /ko -->
 		<div class="alert alert-success" data-bind="html:description"></div>
-		</div>
+	</div>
 	</div>
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="knockout-3.4.2.js"></script>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+	 crossorigin="anonymous"></script>
 	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+	 crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+	 crossorigin="anonymous"></script>
 	<script src="./main.js"></script>
 	<script src="./team.js"></script>
 	<script>
@@ -149,4 +317,5 @@
 		})
 	</script>
 </body>
+
 </html>
