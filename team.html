@@ -69,7 +69,10 @@
 															<div class="text-left">
 																<!-- ko with: home_team -->
 																	<!-- ko with: $parent.away_team -->
-																		<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
+																		<a data-bind="text: 'Jornada ' + $parents[1].stage" style="display: inline"></a>
+																		<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																		<a data-bind="text: ' ('+ $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ', attr:{href: 'match?id=' + $parents[1].id}"></a>
+																		<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 																	<!-- /ko -->
 																<!-- /ko -->
 															</div>
