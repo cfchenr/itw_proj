@@ -56,26 +56,24 @@
 																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
 																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
 																	<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
-																	<!-- /ko -->
+																<!-- /ko -->
 															<!-- /ko -->
 														</div>
 													</div>
 													<br>
 													<hr>
-													<div class="row">
-													</div>
 													<br>
 												<!-- /ko -->
 												<!-- ko foreach: Matches -->
-													<div class="row">
-														<div class="text-left">
-															<!-- ko with: home_team -->
-																<!-- ko with: $parent.away_team -->
-																	<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
+														<div class="row">
+															<div class="text-left">
+																<!-- ko with: home_team -->
+																	<!-- ko with: $parent.away_team -->
+																		<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
+																	<!-- /ko -->
 																<!-- /ko -->
-															<!-- /ko -->
+															</div>
 														</div>
-													</div>
 												<!-- /ko -->
 											</div>
 										</div>
@@ -89,31 +87,38 @@
 										<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse" data-parent="#accordion">
 											<div class="card-body">
 												<!-- ko with: Attributes -->
-												<div class="row">
-													<div class="col-md-12 text-center">
-														<!-- ko foreach: seasonsIdx -->
-															<!-- ko if:$index() == $parentContext.$index() -->
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
-																<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+													<div class="row">
+														<div class="col-md-12 text-center">
+															<!-- ko foreach: seasonsIdx -->
+																<!-- ko if:$index() == $parentContext.$index() -->
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
+																	<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
 																<!-- /ko -->
-														<!-- /ko -->
+															<!-- /ko -->
+														</div>
 													</div>
-												</div>
-												<br>
-												<hr>
-												<div class="row">
-
-												</div>
-												<br>
+													<br>
+													<hr>
+													<br>
+												<!-- /ko -->
+												<!-- ko foreach: Matches -->
+														<div class="row">
+															<div class="text-left">
+																<!-- ko with: home_team -->
+																	<!-- ko with: $parent.away_team -->
+																		<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
+																	<!-- /ko -->
+																<!-- /ko -->
+															</div>
+														</div>
 												<!-- /ko -->
 											</div>
 										</div>
 									<!-- /ko -->
 								</div>
-
-								<!-- /ko -->
+							<!-- /ko -->
 						</div>	
 					</td>
 				</tr>
