@@ -10,6 +10,15 @@
 	integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" type="text/css" href="appStyle.css">
+	<style>
+		#chartdiv {
+			width: 100%;
+			height: 350px;
+		}				
+	</style>
+	<script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+	<script src="https://www.amcharts.com/lib/3/radar.js"></script>
+	<script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 </head>
 <body>
 	<div id="navbar"></div>
@@ -25,10 +34,11 @@
 			</thead>
 			<tbody>		
 				<tr>
+					<div id="chartdiv"></div>
 					<td scope="row">
 						<div id="accordion" role="tablist">
 							<!-- ko foreach: seasons -->
-								<div class="card">
+								<div class="card">					
 									<!-- ko if: $index()==0 -->
 										<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
 											<h5 class="mb-0">
@@ -38,247 +48,40 @@
 										<div data-bind="attr: {id: 'collapse'+$index(), 'aria-labelledby': 'heading'+$index()}" role="tabpanel" class="collapse show" data-parent="#accordion">
 											<div class="card-body">
 												<!-- ko with: Attributes -->
-												<div class="row">
-													<div class="col-md-12 text-center">
-														<!-- ko foreach: seasonsIdx -->
-															<!-- ko if:$index() == $parentContext.$index() -->
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
-																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
+													<div class="row">
+														<div class="col-md-12 text-center">
+															<!-- ko foreach: seasonsIdx -->
+																<!-- ko if:$index() == $parentContext.$index() -->
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
+																	<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
+																	<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+																	<!-- /ko -->
 															<!-- /ko -->
-														<!-- /ko -->
+														</div>
 													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
+													<br>
+													<hr>
+													<div class="row">
 													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
+													<br>
+												<!-- /ko -->
+												<!-- ko foreach: Matches -->
+													<div class="row">
+														<div class="text-left">
+															<!-- ko with: home_team -->
+																<!-- ko with: $parent.away_team -->
+																	<h5 data-bind="text: 'Jornada ' + $parents[1].stage + ': ' + $parent.team_long_name + ' (' + $parents[1].home_team_goal + ') vs (' + $parents[1].away_team_goal + ') ' + team_long_name"></h5>
 																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
+															<!-- /ko -->
+														</div>
 													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-												</div>
-												<br>
-												<hr>
-												<div class="row">
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-												</div>
-												<br>
-												<hr>
-												<div class="row">
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-												</div>
 												<!-- /ko -->
 											</div>
 										</div>
 									<!-- /ko -->
 									<!-- ko if: $index()!=0 -->
-									<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
+										<div class="card-header" role="tab" data-bind="attr: {id: 'heading'+$index()}">
 											<h5 class="mb-0">
 												<a data-toggle="collapse" data-bind="text:  'Season '+Label, attr: {href: '#collapse'+$index(), 'aria-controls': 'collapse'+$index()}" aria-expanded="false"></a>
 											</h5>
@@ -293,240 +96,24 @@
 																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>	
 																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/1_0.png'}"></img>	
 																<img width="74px"; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/2_0.png'}"></img>	
-															<!-- /ko -->
+																<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
+																<!-- /ko -->
 														<!-- /ko -->
 													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
 												</div>
 												<br>
 												<hr>
 												<div class="row">
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
+
 												</div>
 												<br>
-												<hr>
-												<div class="row">
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-													<div class="container col-md-4 col-sm-6 col-xs-12">
-														<div class="col-md-12 text-center font-weight-bold">Speed</div>
-														<hr>
-														<div class="col-md-12">
-															<div class="progress">
-																<!-- ko if: buildupplayspeed > 75 -->
-																	<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																<!-- /ko -->
-																<!-- ko if: buildupplayspeed <= 75 -->
-																	<!-- ko if: buildupplayspeed > 50 -->
-																		<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																	<!-- /ko -->
-																	<!-- ko if: buildupplayspeed <= 50 -->
-																		<!-- ko if: buildupplayspeed > 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass + ' (' + buildupplayspeed + '%)', style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																		<!-- ko if: buildupplayspeed <= 25 -->
-																			<div class="progress-bar progress-bar-striped progress-bar-animated bg-danger" role="progressbar" data-bind="attr: {'aria-valuenow': buildupplayspeed}, text:buildupplayspeedclass, style: {width: buildupplayspeed+'%'}" aria-valuemin="0" aria-valuemax="100"></div>
-																		<!-- /ko -->
-																	<!-- /ko -->
-																<!-- /ko -->
-															</div>
-														</div>	
-													</div>
-												</div>
 												<!-- /ko -->
 											</div>
 										</div>
 									<!-- /ko -->
 								</div>
-							<!-- /ko -->
+
+								<!-- /ko -->
 						</div>	
 					</td>
 				</tr>
