@@ -31,11 +31,11 @@
 				<div class="page-header">
 					<!-- ko foreach: team -->
 					<!-- ko if: team_fifa_api_id -->
-					<img width="54px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+					<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
 					<h1 data-bind="text: team_long_name"></h1>
 					<!-- /ko -->
 					<!-- ko if: !team_fifa_api_id -->
-					<img width="54px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
+					<img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
 					<h1 data-bind="text: team_long_name"></h1>
 					<!-- /ko -->
 					<!-- /ko -->
@@ -161,7 +161,10 @@
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
 																	<!-- /ko -->
-																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
 																	<!-- /ko -->
 																</td>
@@ -185,8 +188,11 @@
 																	</a>
 																</td>
 																<td class="text-center">
-																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 																	<!-- /ko -->
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
