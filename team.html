@@ -73,7 +73,7 @@
 												<!-- ko if:$index() == $parentContext.$index() -->
 												<!-- ko if:!(team_fifa_api_id>0) -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
@@ -102,7 +102,7 @@
 												<!-- /ko -->
 												<!-- ko if:team_fifa_api_id -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
@@ -244,9 +244,9 @@
 												<!-- ko foreach: seasonsIdx -->
 												<!-- ko if:$index() == $parentContext.$index() -->
 												<!-- ko if:!(team_fifa_api_id>0) -->
-												<!-- ko if:season<13 -->
+												<!-- ko if:season<=13 -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
@@ -273,9 +273,9 @@
 												</div>
 												<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
 												<!-- /ko -->
-												<!-- ko if:!(season<13) -->
+												<!-- ko if:!(season<=13) -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
@@ -304,9 +304,9 @@
 												<!-- /ko -->
 												<!-- /ko -->
 												<!-- ko if:team_fifa_api_id -->
-												<!-- ko if:season<13 -->
+												<!-- ko if:season<=13 -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
@@ -333,9 +333,9 @@
 												</div>
 												<div data-bind="attr: {id: 'chartdiv' + $index()}"></div>
 												<!-- /ko -->
-												<!-- ko if:!(season<13) -->
+												<!-- ko if:!(season<=13) -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
@@ -377,9 +377,9 @@
 												<!-- ko foreach: seasonsIdx -->
 												<!-- ko if:$index() == $parentContext.$index() -->
 												<!-- ko if:team_fifa_api_id -->
-												<!-- ko if:season<13 -->
+												<!-- ko if:season<=13 -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/kits/110741/0_0.png'}"></img>
@@ -405,9 +405,9 @@
 													</table>
 												</div>
 												<!-- /ko -->
-												<!-- ko if:!(season<13) -->
+												<!-- ko if:!(season<=13) -->
 												<div class="table-responsive">
-													<table class="table table-striped table-bordered table-hover table-condensed">
+													<table class="table table-bordered table-condensed">
 														<tr class="col-md-12">
 															<td class="col-md-4">
 																<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+ season +'/kits/'+team_fifa_api_id+'/0_0.png'}"></img>
