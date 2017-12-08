@@ -498,6 +498,7 @@
 																	<!-- /ko -->
 																</td>
 																<td class="text-center">
+																	<!-- ko if:idTEAM == $parents[0].id -->
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 																	<div style="background: #dc3545; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#dc3545; display:inline-block">i</div>
 																	<!-- /ko -->
@@ -506,6 +507,18 @@
 																	<!-- /ko -->
 																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
 																	<div style="background: #ffc107; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#ffc107; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- /ko -->
+																	<!-- ko if:idTEAM != $parents[0].id -->
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<div style="background: #28a745; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#28a745; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+																	<div style="background: #dc3545; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#dc3545; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																	<div style="background: #ffc107; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#ffc107; display:inline-block">i</div>
+																	<!-- /ko -->
 																	<!-- /ko -->
 																</td>
 															</td>
