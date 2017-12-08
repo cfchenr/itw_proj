@@ -146,7 +146,7 @@
 																<div class="page-header">
 																	<h3>Stage</h3>
 																</div>
-																<td colspan="3"></td>
+																<td colspan="4"></td>
 															</td>
 														</tr>
 													</thead>
@@ -193,14 +193,27 @@
 																	<!-- /ko -->
 																</td>
 																<td class="text-center">
+																	<!-- ko if:idTEAM == $parents[0].id -->
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
-																	<div style="background: #dc3545; border-radius: 100%; width:14px; height: 14px; font-size:12px; color:#dc3545; display:inline-block">i</div>
+																	<div style="background: #dc3545; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#dc3545; display:inline-block">i</div>
 																	<!-- /ko -->
 																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
-																	<div style="background: #28a745; border-radius: 100%; width:14px; height: 14px; font-size:12px; color:#28a745; display:inline-block">i</div>
+																	<div style="background: #28a745; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#28a745; display:inline-block">i</div>
 																	<!-- /ko -->
 																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
-																	<div style="background: #ffc107; border-radius: 100%; width:14px; height: 14px; font-size:12px; color:#ffc107; display:inline-block">i</div>
+																	<div style="background: #ffc107; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#ffc107; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- /ko -->
+																	<!-- ko if:idTEAM != $parents[0].id -->
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<div style="background: #28a745; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#28a745; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+																	<div style="background: #dc3545; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#dc3545; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																	<div style="background: #ffc107; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#ffc107; display:inline-block">i</div>
+																	<!-- /ko -->
 																	<!-- /ko -->
 																</td>
 															</td>
@@ -438,7 +451,7 @@
 																<div class="page-header">
 																	<h3>Stage</h3>
 																</div>
-																<td colspan="3"></td>
+																<td colspan="4"></td>
 															</td>
 														</tr>
 													</thead>
@@ -453,35 +466,46 @@
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
 																	<!-- /ko -->
-																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 																	<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
 																	<!-- /ko -->
 																</td>
 																<td class="text-center">
 																	<a data-bind="attr:{href: 'match.html?id=' + $parents[1].id}">
 																		<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
-																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].home_team_goal"></span>
-																		<span data-bind="text: 'vs'"></span>
-																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].away_team_goal"></span>
+																		<span data-bind="text: $parents[1].home_team_goal + ' vs ' + $parents[1].away_team_goal"></span>
 																		<!-- /ko -->
 																		<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
-																		<span class="badge badge-pill badge-success" data-bind="text: $parents[1].home_team_goal"></span>
-																		<span data-bind="text: 'vs'"></span>
-																		<span class="badge badge-pill badge-danger" data-bind="text: $parents[1].away_team_goal"></span>
+																		<span data-bind="text: $parents[1].home_team_goal + ' vs ' + $parents[1].away_team_goal"></span>
 																		<!-- /ko -->
 																		<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
-																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].home_team_goal"></span>
-																		<span data-bind="text: 'vs'"></span>
-																		<span class="badge badge-pill badge-primary" data-bind="text: $parents[1].away_team_goal"></span>
+																		<span data-bind="text: $parents[1].home_team_goal + ' vs ' + $parents[1].away_team_goal"></span>
 																		<!-- /ko -->
 																	</a>
 																</td>
 																<td class="text-center">
-																	<!-- ko if:$parents[1].home_team_goal>=$parents[1].away_team_goal -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 																	<!-- /ko -->
 																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 																	<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
+																	<!-- /ko -->
+																</td>
+																<td class="text-center">
+																	<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+																	<div style="background: #dc3545; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#dc3545; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+																	<div style="background: #28a745; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#28a745; display:inline-block">i</div>
+																	<!-- /ko -->
+																	<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
+																	<div style="background: #ffc107; border-radius: 100%; width:12px; height: 12px; font-size:8px; color:#ffc107; display:inline-block">i</div>
 																	<!-- /ko -->
 																</td>
 															</td>

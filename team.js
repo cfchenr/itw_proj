@@ -12,6 +12,7 @@ $(document).ready(function () {
 		self.team = ko.observableArray([]);
 		self.seasons = ko.observableArray([]);
 		self.seasonsIdx = ko.observableArray([]);
+		self.idTEAM = teamID;
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
