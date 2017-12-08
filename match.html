@@ -27,7 +27,7 @@
 				</div>
 			</thead>
 			<tbody>
-                <tr style="background-image: url('https://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                <tr style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 100%, rgba(0,0,0,0.3) 100%), url('https://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center; background-blend-mode: hue;">
                     <td style="height: 780px; position:relative; top:10px;">
                     <!-- ko foreach: match -->
                         <!-- ko foreach: Home_player -->
@@ -36,11 +36,11 @@
                                     <!-- ko foreach: seasonsIdx -->
                                         <span data-bind="css: $parents[1].CSSClass" class="text-center" style="max-width: 5%">
                                             <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                                            <div data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"></div>
+                                            <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%"></div>
                                         </span>
-                                        <span data-bind="css: 'a'+$parent.CSSClass" style="max-width: 5%">
+                                        <span data-bind="css: 'a'+$parent.CSSClass" class="text-center" style="max-width: 5%">
                                             <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                                            <div data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden;"></div>
+                                            <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%"></div>
                                         </span>
                                     <!-- /ko -->
                                 <!-- /ko -->
