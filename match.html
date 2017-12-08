@@ -26,33 +26,58 @@
 					<!-- /ko -->
 				</div>
 			</thead>
-			<tbody>		
-				<!-- ko foreach: match -->
-                    <!-- ko foreach: Home_player -->
-                        <!-- ko foreach: $parent.Away_player -->
-                            <!-- ko if: $index() == $parentContext.$index() -->
-                                <!-- ko foreach: seasonsIdx -->
-                                    <tr>
-                                        <td scope="row">
+			<tbody>
+                <tr style="background-image: url('https://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png')">
+                    <td style="height: 500px; position:relative; top:10px;">
+                    <!-- ko foreach: match -->
+                        <!-- ko foreach: Home_player -->
+                            <!-- ko foreach: $parent.Away_player -->
+                                <!-- ko if: $index() == $parentContext.$index() -->
+                                    <!-- ko foreach: seasonsIdx -->
+                                        <span data-bind="css: $parents[1].CSSClass">
                                             <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                                        </td>
-                                        <td scope="row">    
-                                            <div data-bind="text: $parents[1].player_name"></div>
-                                        </td>
-                                        <td scope="row" class="text-right">
-                                                <div data-bind="text: $parent.player_name"></div>
-                                            </td>
-                                        <td scope="row" class="text-right">
+                                        </span>
+                                        <span data-bind="css: 'a'+$parent.CSSClass">
                                             <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                                        </td>
-                                    </tr> 
+                                        </span>
+                                    <!-- /ko -->
                                 <!-- /ko -->
                             <!-- /ko -->
                         <!-- /ko -->
                     <!-- /ko -->
-				<!-- /ko -->
-			</tbody>
-		</table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-striped">
+            <tbody>
+            <!-- ko foreach: match -->
+                <!-- ko foreach: Home_player -->
+                    <!-- ko foreach: $parent.Away_player -->
+                        <!-- ko if: $index() == $parentContext.$index() -->
+                            <!-- ko foreach: seasonsIdx -->
+                            
+                                <tr>
+                                    <td scope="row">
+                                        <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
+                                    </td>
+                                    <td scope="row">    
+                                        <div data-bind="text: $parents[1].player_name"></div>
+                                    </td>
+                                    <td scope="row" class="text-right">
+                                            <div data-bind="text: $parent.player_name"></div>
+                                    </td>
+                                    <td scope="row" class="text-right">
+                                        <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
+                                    </td>
+                                </tr> 
+                            <!-- /ko -->
+                        <!-- /ko -->
+                    <!-- /ko -->
+                <!-- /ko -->
+            <!-- /ko -->
+            </tbody>
+        </table>
 		<div class="clearfix"></div>
 		<!-- ko if:error -->
 		<div class="alert alert-danger" data-bind="html:error"></div>

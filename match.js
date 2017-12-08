@@ -32,7 +32,7 @@ $(document).ready(function () {
 			ajaxHelper(baseUri, 'GET').done(function(data) {
                 var seasonValue = '[{ "season": "' + data.season.split("/")[1].charAt(2) + data.season.split("/")[1].charAt(3) + '"}]';
                 self.seasonsIdx(JSON.parse(seasonValue));
-                console.log(self.seasonsIdx());
+                console.log(data);
                 self.match(data);
 			});
 		};
