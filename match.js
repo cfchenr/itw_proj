@@ -10,7 +10,7 @@ $(document).ready(function () {
 		self.description = 'This page serves to view the specific match.';
 		self.error = ko.observable();
         self.match = ko.observableArray([]);
-        self.seasonsIdx = ko.observableArray();
+		self.seasonsIdx = ko.observableArray();
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -41,3 +41,4 @@ $(document).ready(function () {
 	};
 	ko.applyBindings(vm);
 });
+

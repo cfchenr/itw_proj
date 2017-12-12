@@ -58,13 +58,14 @@
                     <!-- ko foreach: $parent.Away_player -->
                     <!-- ko if: $index() == $parentContext.$index() -->
                     <!-- ko foreach: seasonsIdx -->
-                    <span data-bind="css: $parents[1].CSSClass" class="text-center" style="max-width: 5%">
+                    <span data-bind="css: $parents[1].CSSClass" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                        <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%"></div>
+                        <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
-                    <span data-bind="css: 'a'+$parent.CSSClass" class="text-center" style="max-width: 5%">
+                    
+                    <span data-bind="css: 'a'+$parent.CSSClass" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                        <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%"></div>
+                        <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
                     <!-- /ko -->
                     <!-- /ko -->
