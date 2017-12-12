@@ -31,6 +31,7 @@ $(document).ready(function () {
 			ajaxHelper(baseUri, 'GET').done(function(data) {
 				self.className = data.countryName + " | " + data.name;
 				self.league(data);
+				console.log(data)
 			});
 		};
 		//--- Initial call

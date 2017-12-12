@@ -22,6 +22,11 @@
 				<div class="page-header">
 					<!-- ko foreach: league -->
 					<h2 data-bind="text: className"></h2>
+					<i style="opacity: 0.5; width:32px" class="fas fa-users"></i>
+					<span style="opacity: 0.5;" data-bind="text: 'Total teams: ' + teams.length"> </span>
+					<br>
+					<i style="opacity: 0.5; width:32px" class="fas fa-columns"></i>					
+					<span style="opacity: 0.5;" data-bind="text: 'Seasons: ' + seasons"></span>
 					<!-- /ko -->
 				</div>
 			</thead>
@@ -35,7 +40,7 @@
 						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 						<!-- /ko -->
 						<!-- ko if: !team_fifa_api_id -->
-						<img width="32px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity: 0.2;"></img>
+						<i style="width:32px; height:22px" class="fas fa-spinner fa-pulse"></i>						
 						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 						<!-- /ko -->
 					</td>
