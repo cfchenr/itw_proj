@@ -51,19 +51,19 @@
             </tr>
         </table>
         <table class="table">
-            <tr style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 100%, rgba(0,0,0,0.3) 100%), url('https://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center; background-blend-mode: hue;">
+            <tr style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 100%, rgba(0,0,0,0.3) 100%), url('http://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center; background-blend-mode: hue;">
                 <td style="height: 780px; position:relative; top:10px;">
                     <!-- ko foreach: match -->
                     <!-- ko foreach: Home_player -->
                     <!-- ko foreach: $parent.Away_player -->
                     <!-- ko if: $index() == $parentContext.$index() -->
                     <!-- ko foreach: seasonsIdx -->
-                    <span data-bind="css: $parents[1].CSSClass" class="text-center player">
+                    <span data-bind="css: $parents[1].CSSClass, attr: {'data-target': '#'+$parents[1].player_fifa_api_id}" data-toggle="modal" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
                         <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
                     
-                    <span data-bind="css: 'a'+$parent.CSSClass" class="text-center player">
+                    <span data-bind="css: 'a'+$parent.CSSClass, attr: {'data-target': '#'+$parent.player_fifa_api_id}" data-toggle="modal" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
                         <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
@@ -75,6 +75,26 @@
                 </td>
             </tr>
         </table>
+        <!-- ko foreach: players -->
+        <div data-bind="attr: {id: player_fifa_api_id}, css: 'modal fade'" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle" data-bind="text: player_name" ></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                    
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /ko -->
         <table class="table table-striped">
             <tbody>
                 <!-- ko foreach: match -->
