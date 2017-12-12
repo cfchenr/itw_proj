@@ -1,19 +1,40 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-	<a class="navbar-brand" href="index.html"><i class="fa fa-soccer-ball-o" aria-hidden="true"></i> Massau</a>
-	<button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-	aria-expanded="false" aria-label="Toggle navigation"></button>
-	<div class="collapse navbar-collapse" id="collapsibleNavId">
-		<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-			<li id="countriesMenu" class="nav-item">
-				<a class="nav-link" href="countries.html"><i class="fa fa-link" aria-hidden="true"></i> Countries</a>
-			</li>
-			<li id="leguessMenu" class="nav-item">
-				<a class="nav-link" href="leagues.html"><i class="fa fa-link" aria-hidden="true"></i> Leagues</a>
-			</li>
-		</ul>
-		<form class="form-inline my-2 my-lg-0">
-			<input class="form-control mr-sm-2" type="text" placeholder="Search"></input>
-			<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-		</form>
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+			 aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#">
+				<img alt="Brand" src="...">
+			</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav mr-auto mt-2 mt-lg-0">
+				<li>
+					<a href="index.html"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+				</li>
+				<li>
+					<a href="leagues.html"><i class="fa fa-globe"></i> Leagues</a>
+				</li>
+				<li>
+					<a href="countries.html">Countries</a>
+				</li>
+			</ul>
+
+			<form class="navbar-form navbar-right">
+				<div class="form-group">
+					<input type="text" class="form-control" placeholder="Search">
+				</div>
+				<button type="submit" class="btn btn-default">Submit</button>
+			</form>
+		</div>
+		<!-- /.navbar-collapse -->
 	</div>
+	<!-- /.container-fluid -->
 </nav>
