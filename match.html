@@ -7,9 +7,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
     <link rel="stylesheet" type="text/css" href="appStyle.css">
 </head>
 
@@ -62,7 +63,7 @@
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
                         <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
-                    
+
                     <span data-bind="css: 'a'+$parent.CSSClass" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
                         <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
