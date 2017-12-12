@@ -10,7 +10,8 @@ $(document).ready(function () {
 		self.description = 'This page serves to view the specific match.';
 		self.error = ko.observable();
         self.match = ko.observableArray([]);
-		self.seasonsIdx = ko.observableArray();
+		self.seasonsIdx = ko.observableArray([]);
+		self.players = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -32,8 +33,20 @@ $(document).ready(function () {
 			ajaxHelper(baseUri, 'GET').done(function(data) {
                 var seasonValue = '[{ "season": "' + data.season.split("/")[1].charAt(2) + data.season.split("/")[1].charAt(3) + '"}]';
                 self.seasonsIdx(JSON.parse(seasonValue));
-                console.log(data);
-                self.match(data);
+				self.match(data);
+				console.log('CALL: getPlayers...');
+				for(var i = 0; i < self.match().Home_player.length; i++) {
+					idP = self.match().Home_player[i].id;
+					ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
+						self.players(self.players().concat(data));
+					});
+				}
+				for(var i = 0; i < self.match().Away_player.length; i++) {
+					idP = self.match().Away_player[i].id;
+					ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
+						self.players(self.players().concat(data));
+					});
+				}
 			});
 		};
 		//--- Initial call
