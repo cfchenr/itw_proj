@@ -76,18 +76,25 @@
                 </td>
             </tr>
         </table>
+        <!-- ko foreach: seasonsIdx -->
         <!-- ko foreach: players -->
         <div data-bind="attr: {id: player_fifa_api_id}, css: 'modal fade'" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
+
                     <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle" data-bind="text: player_name" ></h5>
+                        <h5 class="modal-title" id="modalTitle" data-bind="text: player_name"></h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
+
                     <div class="modal-body">
-                    
+                        <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+$parent.season+'/players/' + player_fifa_api_id + '.png'}"></img>
+                        <hr>
+                        <h6>Data de nascimento: <span class="badge badge-primary" data-bind="text: birthday.substr(0,10)"></span></h6>
+                        <h6>Altura: <span class="badge badge-primary" data-bind="text: height+' cm'"></span></h6>
+                        <h6>Peso: <span class="badge badge-primary" data-bind="text: weight+' lb'"></span></h6>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -96,6 +103,7 @@
             </div>
         </div>
         <!-- /ko -->
+        <!-- /ko -->
         <table class="table table-striped">
             <tbody>
                 <!-- ko foreach: match -->
@@ -103,7 +111,6 @@
                 <!-- ko foreach: $parent.Away_player -->
                 <!-- ko if: $index() == $parentContext.$index() -->
                 <!-- ko foreach: seasonsIdx -->
-
                 <tr>
                     <td scope="row">
                         <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
