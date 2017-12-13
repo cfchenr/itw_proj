@@ -12,6 +12,8 @@ $(document).ready(function () {
         self.match = ko.observableArray([]);
 		self.seasonsIdx = ko.observableArray([]);
 		self.players = ko.observableArray([]);
+		self.attributesHome = ko.observableArray([]);
+		self.attributesAway = ko.observableArray([]);
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
@@ -47,6 +49,21 @@ $(document).ready(function () {
 						self.players(self.players().concat(data));
 					});
 				}
+				console.log('CALL: getTeams...');
+				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().home_team.id, 'GET').done(function(data) {
+					for(var k = 0; k < data.length; k++) {
+						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
+							self.attributesHome(data[k].Attributes);
+						}
+					}
+				});
+				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().away_team.id, 'GET').done(function(data) {
+					for(var k = 0; k < data.length; k++) {
+						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
+							self.attributesAway(data[k].Attributes);
+						}
+					}
+				});
 			});
 		};
 		//--- Initial call
