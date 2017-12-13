@@ -17,121 +17,183 @@
 <body>
     <div id="navbar"></div>
     <div class="container">
-        <table class="table table-bordered">
-            <tr class="text-center">
+        <div class="row" style="margin-bottom:10px">
+            <div class="text-center">
                 <!-- ko foreach: match -->
                 <!-- ko with: home_team -->
                 <!-- ko with: $parent.away_team -->
                 <!-- ko foreach: seasonsIdx -->
-                <td class="col-md-1">
+                <div class="col-md-1">
                     <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/teams/'+$parents[1].team_fifa_api_id+'.png'}"></img>
-                </td>
-                <td class="col-md-5">
+                </div>
+                <div class="col-md-5">
                     <h2>
                         <span data-bind="text: $parents[1].team_long_name"></span>
-                        <span class="label label-danger " style="border-radius:50%"data-bind="text: $parents[2].home_team_goal"></span>
+                        <span class="label label-danger " style="border-radius:50%" data-bind="text: $parents[2].home_team_goal"></span>
                     </h2>
                     <span style="opacity: 0.5">Home team kit </span>
                     <img width="28px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/kits/'+$parents[1].team_fifa_api_id+'/0_0.png'}"></img>
-                </td>
-                <td class="col-md-5">
+                </div>
+                <div class="col-md-5">
                     <h2>
-                        <span class="label label-primary " style="border-radius:50%"data-bind="text: $parents[2].away_team_goal"></span>
+                        <span class="label label-primary " style="border-radius:50%" data-bind="text: $parents[2].away_team_goal"></span>
                         <span data-bind="text: $parent.team_long_name"></span>
                     </h2>
                     <img width="28px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/kits/'+$parent.team_fifa_api_id+'/1_0.png'}"></img>
                     <span style="opacity: 0.5"> Away team kit</span>
-                </td>
-                <td class="col-md-1">
+                </div>
+                <div class="col-md-1">
                     <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
-                </td>
+                </div>
                 <!-- /ko -->
                 <!-- /ko -->
                 <!-- /ko -->
                 <!-- /ko -->
-            </tr>
-        </table>
-        <table class="table">
-            <tr style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 100%, rgba(0,0,0,0.3) 100%), url('http://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center; background-blend-mode: hue;">
-                <td style="height: 780px; position:relative; top:10px;">
-                    <!-- ko foreach: match -->
-                    <!-- ko foreach: Home_player -->
-                    <!-- ko foreach: $parent.Away_player -->
-                    <!-- ko if: $index() == $parentContext.$index() -->
-                    <!-- ko foreach: seasonsIdx -->
-                    <span data-bind="css: $parents[1].CSSClass, attr: {'data-target': '#'+$parents[1].player_fifa_api_id}" data-toggle="modal" class="text-center player">
-                        <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                        <div class="label label-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
-                    </span>
-                    
-                    <span data-bind="css: 'a'+$parent.CSSClass, attr: {'data-target': '#'+$parent.player_fifa_api_id}" data-toggle="modal" class="text-center player">
-                        <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                        <div class="label label-primary" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
-                    </span>
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- /ko -->
-                    <!-- /ko -->
-                </td>
-            </tr>
-        </table>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table">
+                    <tr style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.3) 100%, rgba(0,0,0,0.3) 100%), url('http://img00.deviantart.net/0d1b/i/2009/102/a/0/football_pitch_by_haqn.png'); background-repeat: no-repeat; background-size: cover; background-position: center; background-blend-mode: hue;">
+                        <td style="height: 780px; position:relative; top:10px;">
+                            <!-- ko foreach: match -->
+                            <!-- ko foreach: Home_player -->
+                            <!-- ko foreach: $parent.Away_player -->
+                            <!-- ko if: $index() == $parentContext.$index() -->
+                            <!-- ko foreach: seasonsIdx -->
+                            <span data-bind="css: $parents[1].CSSClass, attr: {'data-target': '#'+$parents[1].player_fifa_api_id}" data-toggle="modal"
+                                class="text-center player">
+                                <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
+                                <div class="label label-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
+                            </span>
+
+                            <span data-bind="css: 'a'+$parent.CSSClass, attr: {'data-target': '#'+$parent.player_fifa_api_id}" data-toggle="modal" class="text-center player">
+                                <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
+                                <div class="label label-primary" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
+                            </span>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
         <!-- ko foreach: seasonsIdx -->
         <!-- ko foreach: players -->
-        <div data-bind="attr: {id: player_fifa_api_id}, css: 'modal fade'" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="modalTitle" data-bind="text: player_name"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-
-                    <div class="modal-body">
-                        <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+$parent.season+'/players/' + player_fifa_api_id + '.png'}"></img>
-                        <hr>
-                        <h6>Data de nascimento: <span class="badge badge-primary" data-bind="text: birthday.substr(0,10)"></span></h6>
-                        <h6>Altura: <span class="badge badge-primary" data-bind="text: height+' cm'"></span></h6>
-                        <h6>Peso: <span class="badge badge-primary" data-bind="text: weight+' lb'"></span></h6>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <div class="row">
+            <div class="col-md-10">
+                <div data-bind="attr: {id: player_fifa_api_id}, css: 'modal fade'" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="modalTitle" data-bind="text: player_name"></h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+$parent.season+'/players/' + player_fifa_api_id + '.png'}"></img>
+                                <hr>
+                                <h6>Data de nascimento:
+                                    <span class="badge badge-primary" data-bind="text: birthday.substr(0,10)"></span>
+                                </h6>
+                                <h6>Altura:
+                                    <span class="badge badge-primary" data-bind="text: height+' cm'"></span>
+                                </h6>
+                                <h6>Peso:
+                                    <span class="badge badge-primary" data-bind="text: weight+' lb'"></span>
+                                </h6>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <!-- /ko -->
         <!-- /ko -->
-        <table class="table table-striped">
-            <tbody>
-                <!-- ko foreach: match -->
-                <!-- ko foreach: Home_player -->
-                <!-- ko foreach: $parent.Away_player -->
-                <!-- ko if: $index() == $parentContext.$index() -->
-                <!-- ko foreach: seasonsIdx -->
-                <tr>
-                    <td scope="row">
-                        <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                    </td>
-                    <td scope="row">
-                        <div data-bind="text: $parents[1].player_name"></div>
-                    </td>
-                    <td scope="row" class="text-right">
-                        <div data-bind="text: $parent.player_name"></div>
-                    </td>
-                    <td scope="row" class="text-right">
-                        <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                    </td>
-                </tr>
+        <!-- ko foreach: match -->
+        <!-- ko foreach: Home_player -->
+        <!-- ko foreach: $parent.Away_player -->
+        <!-- ko if: $index() == $parentContext.$index() && !($index()%2)-->
+        <!-- ko foreach: seasonsIdx -->
+        <div class="row" style="padding-bottom:10px; padding-top:10px">
+            <div scope="row" class="col-md-2 col-sm-10" style="padding:0px">
+                <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
+            </div>
+            <div scope="row" class="col-md-4 col-sm-10" style="padding:0px">
+                <span data-bind="text: $parents[1].player_name"></span>
+            </div>
+            <div scope="row" class="col-md-4 col-sm-10 text-right" style="padding:0px">
+                <span data-bind="text: $parent.player_name"></span>
+            </div>
+            <div scope="row" class="col-md-2 col-sm-10 text-right" style="padding:0px">
+                <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- ko foreach: $parent.Away_player -->
+        <!-- ko if: $index() == $parentContext.$index() && $index()%2 -->
+        <!-- ko foreach: seasonsIdx -->
+        <div class="row" style="background-color: #e1e1e1; padding-bottom:10px; padding-top:10px">
+            <div scope="row" class="col-md-2 col-sm-10" style="padding:0px">
+                <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
+            </div>
+            <div scope="row" class="col-md-4 col-sm-10" style="padding:0px">
+                <span data-bind="text: $parents[1].player_name"></span>
+            </div>
+            <div scope="row" class="col-md-4 col-sm-10 text-right" style="padding:0px">
+                <span data-bind="text: $parent.player_name"></span>
+            </div>
+            <div scope="row" class="col-md-2 col-sm-10 text-right" style="padding:0px">
+                <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+
+        <!-- ko foreach: attributesHome -->
+        <!-- ko foreach: attributesAway -->
+        <!-- ko if: $index() == $parentContext.$index() -->
+        <div class="row">
+            <div class="col-md-4">
+                <!-- ko if: buildupplayspeed < $parent.buildupplayspeed -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(buildupplayspeed-$parent.buildupplayspeed)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplayspeed-$parent.buildupplayspeed)/2 + '%'}, text:(buildupplayspeed-$parent.buildupplayspeed)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
                 <!-- /ko -->
+                <!-- ko if: buildupplayspeed > $parent.buildupplayspeed -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplayspeed-$parent.buildupplayspeed)/2 + '%'}, text:(buildupplayspeed-$parent.buildupplayspeed)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
                 <!-- /ko -->
-                <!-- /ko -->
-                <!-- /ko -->
-                <!-- /ko -->
-            </tbody>
-        </table>
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <!-- /ko -->
+
         <div class="clearfix"></div>
         <!-- ko if:error -->
         <div class="alert alert-danger" data-bind="html:error"></div>
@@ -141,12 +203,7 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="knockout-3.4.2.js"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
         crossorigin="anonymous"></script>
     <script src="./main.js"></script>
     <script src="./match.js"></script>

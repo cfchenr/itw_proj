@@ -51,6 +51,7 @@ $(document).ready(function () {
 				}
 				console.log('CALL: getTeams...');
 				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().home_team.id, 'GET').done(function(data) {
+					console.log(data);
 					for(var k = 0; k < data.length; k++) {
 						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
 							self.attributesHome(data[k].Attributes);
@@ -58,6 +59,7 @@ $(document).ready(function () {
 					}
 				});
 				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().away_team.id, 'GET').done(function(data) {
+					console.log(data);
 					for(var k = 0; k < data.length; k++) {
 						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
 							self.attributesAway(data[k].Attributes);
