@@ -21,7 +21,7 @@ $(document).ready(function () {
 				type: method,
 				url: uri,
 				dataType: 'json',
-				contentType: 'application/json',
+				contentType: 'application/json',	
 				data: data ? JSON.stringify(data) : null,
 				error: function(jqXHR, textStatus, errorThrown) {
 					console.log("AJAX Call [" + uri + "] Fail...");

@@ -1,6 +1,15 @@
 body{
 	font-family: arial, verdana, sans-serif;
 }
+.one, .two, .three{
+    position:absolute;
+	margin-top:-10px;
+	z-index:1;
+	height:40px;
+	width:40px;
+	border-radius:25px;
+	
+}
 .player {
 	max-width: 8%;
 	min-width: 5%;
