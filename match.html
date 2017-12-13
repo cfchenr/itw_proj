@@ -29,14 +29,14 @@
                 <td class="col-md-5">
                     <h2>
                         <span data-bind="text: $parents[1].team_long_name"></span>
-                        <span class="badge badge-danger badge-pill" data-bind="text: $parents[2].home_team_goal"></span>
+                        <span class="label label-danger " style="border-radius:50%"data-bind="text: $parents[2].home_team_goal"></span>
                     </h2>
                     <span style="opacity: 0.5">Home team kit </span>
                     <img width="28px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/kits/'+$parents[1].team_fifa_api_id+'/0_0.png'}"></img>
                 </td>
                 <td class="col-md-5">
                     <h2>
-                        <span class="badge badge-info badge-pill" data-bind="text: $parents[2].away_team_goal"></span>
+                        <span class="label label-primary " style="border-radius:50%"data-bind="text: $parents[2].away_team_goal"></span>
                         <span data-bind="text: $parent.team_long_name"></span>
                     </h2>
                     <img width="28px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/'+season+'/kits/'+$parent.team_fifa_api_id+'/1_0.png'}"></img>
@@ -61,12 +61,12 @@
                     <!-- ko foreach: seasonsIdx -->
                     <span data-bind="css: $parents[1].CSSClass, attr: {'data-target': '#'+$parents[1].player_fifa_api_id}" data-toggle="modal" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
-                        <div class="badge badge-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
+                        <div class="label label-danger" data-bind="text: $parents[1].player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
                     
                     <span data-bind="css: 'a'+$parent.CSSClass, attr: {'data-target': '#'+$parent.player_fifa_api_id}" data-toggle="modal" class="text-center player">
                         <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
-                        <div class="badge badge-info" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
+                        <div class="label label-primary" data-bind="text: $parent.player_name" style="text-overflow: ellipsis; white-space: nowrap; overflow: hidden; max-width: 100%; display: block;"></div>
                     </span>
                     <!-- /ko -->
                     <!-- /ko -->
