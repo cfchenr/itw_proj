@@ -189,6 +189,182 @@
                 </div>
                 <!-- /ko -->
             </div>
+            <div class="col-md-4">
+                <!-- ko if: buildupplayspeed < $parent.buildupplayspeed -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(buildupplayspeed-$parent.buildupplayspeed)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplayspeed-$parent.buildupplayspeed)/2 + '%'}, text:(buildupplayspeed-$parent.buildupplayspeed)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: buildupplayspeed > $parent.buildupplayspeed -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplayspeed-$parent.buildupplayspeed)/2 + '%'}, text:(buildupplayspeed-$parent.buildupplayspeed)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: buildupplaypassing < $parent.buildupplaypassing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(buildupplaypassing-$parent.buildupplaypassing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplaypassing-$parent.buildupplaypassing)/2 + '%'}, text:(buildupplaypassing-$parent.buildupplaypassing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: buildupplaypassing > $parent.buildupplaypassing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplaypassing-$parent.buildupplaypassing)/2 + '%'}, text:(buildupplaypassing-$parent.buildupplaypassing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: chancecreationpassing < $parent.chancecreationpassing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(chancecreationpassing-$parent.chancecreationpassing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationpassing-$parent.chancecreationpassing)/2 + '%'}, text:(chancecreationpassing-$parent.chancecreationpassing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: chancecreationpassing > $parent.chancecreationpassing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationpassing-$parent.chancecreationpassing)/2 + '%'}, text:(chancecreationpassing-$parent.chancecreationpassing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: chancecreationcrossing < $parent.chancecreationcrossing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(chancecreationcrossing-$parent.chancecreationcrossing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationcrossing-$parent.chancecreationcrossing)/2 + '%'}, text:(chancecreationcrossing-$parent.chancecreationcrossing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: chancecreationcrossing > $parent.chancecreationcrossing -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationcrossing-$parent.chancecreationcrossing)/2 + '%'}, text:(chancecreationcrossing-$parent.chancecreationcrossing)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: chancecreationshooting < $parent.chancecreationshooting -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(chancecreationshooting-$parent.chancecreationshooting)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationshooting-$parent.chancecreationshooting)/2 + '%'}, text:(chancecreationshooting-$parent.chancecreationshooting)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: chancecreationshooting > $parent.chancecreationshooting -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationshooting-$parent.chancecreationshooting)/2 + '%'}, text:(chancecreationshooting-$parent.chancecreationshooting)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: defencepressure < $parent.defencepressure -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(defencepressure-$parent.defencepressure)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(defencepressure-$parent.defencepressure)/2 + '%'}, text:(defencepressure-$parent.defencepressure)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: defencepressure > $parent.defencepressure -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (defencepressure-$parent.defencepressure)/2 + '%'}, text:(defencepressure-$parent.defencepressure)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: defenceaggression < $parent.defenceaggression -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(defenceaggression-$parent.defenceaggression)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(defenceaggression-$parent.defenceaggression)/2 + '%'}, text:(defenceaggression-$parent.defenceaggression)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: defenceaggression > $parent.defenceaggression -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (defenceaggression-$parent.defenceaggression)/2 + '%'}, text:(defenceaggression-$parent.defenceaggression)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: defenceteamwidth < $parent.defenceteamwidth -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" data-bind="style: {width: 50+(defenceteamwidth-$parent.defenceteamwidth)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-danger" role="progressbar" data-bind="style: {width: -(defenceteamwidth-$parent.defenceteamwidth)/2 + '%'}, text:(defenceteamwidth-$parent.defenceteamwidth)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: defenceteamwidth > $parent.defenceteamwidth -->
+                <div class="progress col-md-12">
+                    <div class="progress-bar " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-primary" role="progressbar" data-bind="style: {width: (defenceteamwidth-$parent.defenceteamwidth)/2 + '%'}, text:(defenceteamwidth-$parent.defenceteamwidth)/2">
+                    </div>
+                    <div class="progress-bar " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
         </div>
         <!-- /ko -->
         <!-- /ko -->
