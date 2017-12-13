@@ -428,6 +428,95 @@
 							</div>
 						</div>
 						<br>
+						<div class="row">
+							<div class="col-md-4">
+								<div class="text-center">
+									<h4 data-bind="text: buildupplaypositioningclass"></h4>
+								</div>
+								<div class="text-center">
+									<h6>Velocidade</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: buildupplayspeedclass + ' ('+buildupplayspeed+'%)', style: {width: buildupplayspeed+'%'}">
+									</div>
+								</div>
+								<div class="text-center">
+									<h6>Drible</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: buildupplaydribblingclass + ' ('+buildupplaydribbling+'%)', style: {width: buildupplaydribbling+'%'}">
+									</div>
+								</div> 
+								<div class="text-center">
+									<h6>Passe</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: buildupplaypassingclass + ' ('+buildupplaypassing+'%)', style: {width: buildupplaypassing+'%'}">
+									</div>
+								</div> 
+							</div>
+							<div class="col-md-4">
+								<div class="text-center">
+									<h4 data-bind="text: chancecreationpositioningclass"></h4>
+								</div>
+								<div class="text-center">
+									<h6>Criação de oportunidades por passe</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: chancecreationpassingclass + ' ('+chancecreationpassing+'%)', style: {width: chancecreationpassing+'%'}">
+									</div>
+								</div>
+								<div class="text-center">
+									<h6>Criação de oportunidades por cruzamento</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: chancecreationcrossingclass + ' ('+chancecreationcrossing+'%)', style: {width: chancecreationcrossing+'%'}">
+									</div>
+								</div> 
+								<div class="text-center">
+									<h6>Criação de oportunidades por remate</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: chancecreationshootingclass + ' ('+chancecreationshooting+'%)', style: {width: chancecreationshooting+'%'}">
+									</div>
+								</div> 
+							</div>
+							<div class="col-md-4">
+								<div class="text-center">
+									<h4 data-bind="text: defencedefenderlineclass"></h4>
+								</div>
+								<div class="text-center">
+									<h6>Pressão</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: defencepressureclass + ' ('+defencepressure+'%)', style: {width: defencepressure+'%'}">
+									</div>
+								</div>
+								<div class="text-center">
+									<h6>Agressividade</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: defenceaggressionclass + ' ('+defenceaggression+'%)', style: {width: defenceaggression+'%'}">
+									</div>
+								</div> 
+								<div class="text-center">
+									<h6>Largura defensiva</h6>
+								</div>
+								<div class="progress">
+									<div class="progress-bar progress-bar-danger progress-bar-striped active" role="progressbar"
+									aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width:40%" data-bind="text: defenceteamwidthclass + ' ('+defenceteamwidth+'%)', style: {width: defenceteamwidth+'%'}">
+									</div>
+								</div> 
+							</div>
+						</div>
 						<hr>
 						<br>
 						<!-- /ko -->
@@ -628,6 +717,10 @@
 				</div>
 			</div>
 		</div>
+		<br>
+		<!-- ko foreach: team -->
+		<iframe id="map" class="col-md-12" width="600" height="450" frameborder="0" style="border:0" data-bind="attr: {src: 'https://www.google.com/maps/embed/v1/place?key=AIzaSyD4iE2xVSpkLLOXoyqT-RuPwURN3ddScAI&q='+team_long_name+' Stadium' }" allowfullscreen></iframe>		
+		<!-- /ko -->
 		<br>
 		<div class="clearfix"></div>
 		<!-- ko if:error -->

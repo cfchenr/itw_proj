@@ -32,7 +32,6 @@ $(document).ready(function () {
 		self.getTeam = function() {
 			console.log('CALL: getTeam...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
-				console.log(data);							
 				self.team(data);
 				console.log('CALL: getSeasons...');
 				var baseUri = 'http://192.168.160.28/football/api/teams/seasons/'+ teamID;
@@ -45,7 +44,6 @@ $(document).ready(function () {
 					}
 					aux += "]"
 					self.seasonsIdx(JSON.parse(aux));
-					console.log(self.seasons());
 				});
 			});
 		};
