@@ -253,7 +253,7 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationpassing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: chancecreationpassing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
                     <!-- ko if: chancecreationpassing == $parent.chancecreationpassing -->
@@ -636,29 +636,43 @@
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalTitle" data-bind="text: player_name"></h5>
+                                <h3 class="modal-title" id="modalTitle" data-bind="text: player_name"></h3>
                             </div>
                             <div class="modal-body">
                                 <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+$parent.season+'/players/' + player_fifa_api_id + '.png'}"></img>
                                 <hr>
-                                <h6>Data de nascimento:
-                                    <span class="badge badge-primary" data-bind="text: birthday.substr(0,10)"></span>
-                                </h6>
-                                <h6>Altura:
-                                    <span class="badge badge-primary" data-bind="text: height+' cm'"></span>
-                                </h6>
-                                <h6>Peso:
-                                    <span class="badge badge-primary" data-bind="text: weight+' lb'"></span>
-                                </h6>
-                            </div>
+                                    <div class="col-md-6">
+                                        <h5>Birthday:
+                                            <span class="label label-primary" data-bind="text: birthday.substr(0,10)"></span>
+                                        </h5>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <!-- foreach: $parent.player_attributes -->
+                                        <h5>Overall Rating:
+                                            <span class="label label-primary" data-bind="text: $parent.date"></span>
+                                        </h5>
+                                        <!-- /ko -->
+                                    </div>
+                                    
+                                    <h5>Height:
+                                        <span class="label label-primary" data-bind="text: height+' cm'"></span>
+                                    </h5>
+                                    <h5>Weight:
+                                        <span class="label label-primary" data-bind="text: weight+' lb'"></span>
+                                    </h5>
+                                </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
         <!-- /ko -->
         <!-- /ko -->
+        <div class="col-sm-12 col-md-12 text-left">
+            <h3>
+                <span class="fa fa-users"></span> Players
+            </h3>
+        </div>
         <!-- ko foreach: match -->
         <!-- ko foreach: Home_player -->
         <!-- ko foreach: $parent.Away_player -->
@@ -670,10 +684,10 @@
                     <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
                 </div>
                 <div class="col-md-3 col-sm-10">
-                    <span data-bind="text: $parents[1].player_name"></span>
+                    <a data-bind="text: $parents[1].player_name, attr:{href: 'player.html?' + $parents[1].id}"></a>
                 </div>
                 <div class="col-md-3 col-sm-10 text-right">
-                    <span data-bind="text: $parent.player_name"></span>
+                    <a data-bind="text: $parent.player_name, attr:{href: 'player.html?' + $parent.id}"></a>
                 </div>
                 <div class="col-md-3 col-sm-10 text-right">
                     <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>
@@ -692,10 +706,10 @@
                     <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parents[1].player_fifa_api_id + '.png'}"></img>
                 </div>
                 <div class="col-md-3 col-sm-10">
-                    <span data-bind="text: $parents[1].player_name"></span>
+                    <a data-bind="text: $parents[1].player_name, attr:{href: 'player.html?' + $parents[1].id}"></a>
                 </div>
-                <div class="col-md-3 col-sm-10 text-right" >
-                    <span data-bind="text: $parent.player_name"></span>
+                <div class="col-md-3 col-sm-10 text-right">
+                    <a data-bind="text: $parent.player_name, attr:{href: 'player.html?' + $parent.id}"></a>
                 </div>
                 <div class="col-md-3 col-sm-10 text-right">
                     <img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+season+'/players/' + $parent.player_fifa_api_id + '.png'}"></img>

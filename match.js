@@ -53,6 +53,7 @@ $(document).ready(function () {
 				idP = self.match().Away_player[i].id;
 				ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
 					self.players(self.players().concat(data));
+					console.log(self.players());
 				});
 			}
 		};
