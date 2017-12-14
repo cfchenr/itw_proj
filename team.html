@@ -286,12 +286,30 @@
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 									</div>
 									<div class="text-center col-md-2 col-sm-12">
@@ -309,12 +327,30 @@
 									</div>
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 									</div>
@@ -352,12 +388,30 @@
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 									</div>
 									<div class="text-center col-md-2 col-sm-12">
@@ -375,12 +429,30 @@
 									</div>
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 									</div>
@@ -672,12 +744,30 @@
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 									</div>
 									<div class="text-center col-md-2 col-sm-12">
@@ -695,12 +785,30 @@
 									</div>
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 									</div>
@@ -738,12 +846,30 @@
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}" style="opacity:0.5;"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal==$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
 										<a data-bind="text: $parent.team_long_name, attr:{href: 'team.html?id=' + $parent.id}"></a>
+										<!-- ko if: $parent.team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+$parent.team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !$parent.team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<!-- /ko -->
 									</div>
 									<div class="text-center col-md-2 col-sm-12">
@@ -761,12 +887,30 @@
 									</div>
 									<div class="text-center col-md-4 col-sm-12">
 										<!-- ko if:$parents[1].home_team_goal>$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; style="opacity:0.5" data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px; opacity: 0.5" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}" style="opacity:0.5;"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal == $parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 										<!-- ko if:$parents[1].home_team_goal<$parents[1].away_team_goal -->
+										<!-- ko if: team_fifa_api_id -->
+										<img width="16px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+										<!-- /ko -->
+										<!-- ko if: !team_fifa_api_id -->
+										<div style="width:24px; height:14px" class="fas fa-spinner fa-pulse"></div>
+										<!-- /ko -->
 										<a data-bind="text: team_long_name, attr:{href: 'team.html?id=' + id}"></a>
 										<!-- /ko -->
 									</div>
