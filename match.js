@@ -36,40 +36,49 @@ $(document).ready(function () {
                 var seasonValue = '[{ "season": "' + data.season.split("/")[1].charAt(2) + data.season.split("/")[1].charAt(3) + '"}]';
                 self.seasonsIdx(JSON.parse(seasonValue));
 				self.match(data);
-				console.log('CALL: getPlayers...');
-				for(var i = 0; i < self.match().Home_player.length; i++) {
-					idP = self.match().Home_player[i].id;
-					ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
-						self.players(self.players().concat(data));
-					});
-				}
-				for(var i = 0; i < self.match().Away_player.length; i++) {
-					idP = self.match().Away_player[i].id;
-					ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
-						self.players(self.players().concat(data));
-					});
-				}
-				console.log('CALL: getTeams...');
-				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().home_team.id, 'GET').done(function(data) {
-					console.log(data);
-					for(var k = 0; k < data.length; k++) {
-						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
-							self.attributesHome(data[k].Attributes);
-						}
-					}
+				self.getTeamHome();
+				self.getTeamAway();
+				self.getPlayers();	
+			});
+		};
+		self.getPlayers = function() {
+			console.log('CALL: getPlayers...');
+			for(var i = 0; i < self.match().Home_player.length; i++) {
+				idP = self.match().Home_player[i].id;
+				ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
+					self.players(self.players().concat(data));
 				});
-				ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().away_team.id, 'GET').done(function(data) {
-					console.log(data);
-					for(var k = 0; k < data.length; k++) {
-						if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
-							self.attributesAway(data[k].Attributes);
-						}
-					}
+			}
+			for(var i = 0; i < self.match().Away_player.length; i++) {
+				idP = self.match().Away_player[i].id;
+				ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
+					self.players(self.players().concat(data));
 				});
+			}
+		};
+		self.getTeamHome = function() {
+			console.log('CALL: getTeamHome...');
+			ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().home_team.id, 'GET').done(function(data) {
+				for(var k = 0; k < data.length; k++) {
+					if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
+						self.attributesHome(data[k].Attributes);
+					}
+				}
+			});
+		};
+		self.getTeamAway = function() {
+			console.log('CALL: getTeamAway...');
+			ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().away_team.id, 'GET').done(function(data) {
+				for(var k = 0; k < data.length; k++) {
+					if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
+						self.attributesAway(data[k].Attributes);
+					}
+				}
 			});
 		};
 		//--- Initial call
 		self.getMatch();
+		
 	};
 	ko.applyBindings(vm);
 });
