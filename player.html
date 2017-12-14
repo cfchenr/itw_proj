@@ -23,22 +23,286 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="page-header">
-					<!-- ko foreach: player -->
-					<!-- ko if: player_fifa_api_id -->
-					<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/players/'+player_fifa_api_id+'.png'}"></img>
-					<h1 data-bind="text: player_name"></h1>
-					<!-- /ko -->
-					<!-- ko if: !player_fifa_api_id -->
-					<img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
-					<h1 data-bind="text: player_name"></h1>
-					<!-- /ko -->
-					<!-- /ko -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <!-- ko foreach: player -->
+                            <!-- ko if: player_fifa_api_id -->
+                            <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/16/players/'+player_fifa_api_id+'.png'}"></img>
+                            <h1 data-bind="text: player_name"></h1>
+                            <!-- /ko -->
+                            <!-- ko if: !player_fifa_api_id -->
+                            <img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
+                            <h1 data-bind="text: player_name"></h1>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                        </div>
+                        <div class="col-md-4">
+                            <!-- ko foreach: player -->
+                            <!-- ko if: player_fifa_api_id -->
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Birthday</div><div class="label label-warning col-md-4 text-left" data-bind="text: birthday.substr(0,10)"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Height</div><div class="label label-warning col-md-4 text-left" data-bind="text: height+' cm'"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Weight</div><div class="label label-warning col-md-4 text-left" data-bind="text: weight+' lb'"></div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- /ko -->                       
+                        </div>
+                        <div class="col-md-4">
+                            <!-- ko foreach: player -->
+                            <!-- ko if: player_attributes -->
+                            <!-- ko foreach: player_attributes -->
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Overall rating</div><div class="label label-danger col-md-4 text-left" data-bind="text: overall_rating"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Potential</div><div class="label label-danger col-md-4 text-left" data-bind="text: potential"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Preferred foot</div><div class="label label-danger col-md-4 text-left" data-bind="text: preferred_foot"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Attacking work rate</div><div class="label label-danger col-md-4 text-left" data-bind="text: attacking_work_rate"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Defesive work rate</div><div class="label label-danger col-md-4 text-left" data-bind="text: defensive_work_rate"></div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- /ko -->
+                            <!-- ko if: player_attributes.length == 0 -->
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Overall rating</div><div class="label label-danger col-md-4 text-left" data-bind="text: '--'"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Potential</div><div class="label label-danger col-md-4 text-left" data-bind="text: '--'"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Preferred foot</div><div class="label label-danger col-md-4 text-left" data-bind="text: '--'"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Attacking work rate</div><div class="label label-danger col-md-4 text-left" data-bind="text: '--'"></div>
+                            </div>
+                            <div class="col-md-12 h5">
+                                <div class="col-md-8 text-left">Defesive work rate</div><div class="label label-danger col-md-4 text-left" data-bind="text: '--'"></div>
+                            </div>
+                            <!-- /ko -->
+                            <!-- /ko -->                        
+                        </div>
+                    </div>
 				</div>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-12">
-
+			<div class="col-md-12 text-center">
+                <!-- ko foreach: player -->
+                <!-- ko if: player_attributes -->
+                <!-- ko foreach: player_attributes -->
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Crossing</div><div class="label label-primary col-md-4 text-right" data-bind="text: crossing"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Finishing</div><div class="label label-primary col-md-4 text-right" data-bind="text: finishing"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Heading accuracy</div><div class="label label-primary col-md-4 text-right" data-bind="text: heading_accuracy"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Short passing</div><div class="label label-primary col-md-4 text-right" data-bind="text: short_passing"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Volleys</div><div class="label label-primary col-md-4 text-right" data-bind="text: volleys"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Dribbling</div><div class="label label-primary col-md-4 text-right" data-bind="text: dribbling"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Curve</div><div class="label label-primary col-md-4 text-right" data-bind="text: curve"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Free kick accuracy</div><div class="label label-primary col-md-4 text-right" data-bind="text: free_kick_accuracy"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Long passing</div><div class="label label-primary col-md-4 text-right" data-bind="text: long_passing"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Ball control</div><div class="label label-primary col-md-4 text-right" data-bind="text: ball_control"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Acceleration</div><div class="label label-primary col-md-4 text-right" data-bind="text: acceleration"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Sprint speed</div><div class="label label-primary col-md-4 text-right" data-bind="text: sprint_speed"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Agility</div><div class="label label-primary col-md-4 text-right" data-bind="text: agility"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Reactions</div><div class="label label-primary col-md-4 text-right" data-bind="text: reactions"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Balance</div><div class="label label-primary col-md-4 text-right" data-bind="text: balance"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Shot power</div><div class="label label-primary col-md-4 text-right" data-bind="text: shot_power"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Jumping</div><div class="label label-primary col-md-4 text-right" data-bind="text: jumping"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Stamina</div><div class="label label-primary col-md-4 text-right" data-bind="text: stamina"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Strength</div><div class="label label-primary col-md-4 text-right" data-bind="text: strength"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Long shots</div><div class="label label-primary col-md-4 text-right" data-bind="text: long_shots"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Aggression</div><div class="label label-primary col-md-4 text-right" data-bind="text: aggression"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Interceptions</div><div class="label label-primary col-md-4 text-right" data-bind="text: interceptions"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Positioning</div><div class="label label-primary col-md-4 text-right" data-bind="text: positioning"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Vision</div><div class="label label-primary col-md-4 text-right" data-bind="text: vision"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Penalties</div><div class="label label-primary col-md-4 text-right" data-bind="text: penalties"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Marking</div><div class="label label-primary col-md-4 text-right" data-bind="text: marking"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Standing tackle</div><div class="label label-primary col-md-4 text-right" data-bind="text: standing_tackle"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Sliding tackle</div><div class="label label-primary col-md-4 text-right" data-bind="text: sliding_tackle"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK diving</div><div class="label label-primary col-md-4 text-right" data-bind="text: gk_diving"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK handling</div><div class="label label-primary col-md-4 text-right" data-bind="text: gk_handling"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK kicking</div><div class="label label-primary col-md-4 text-right" data-bind="text: gk_kicking"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK positioning</div><div class="label label-primary col-md-4 text-right" data-bind="text: gk_positioning"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK reflexes</div><div class="label label-primary col-md-4 text-right" data-bind="text: gk_reflexes"></div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
+                <!-- ko if: player_attributes.length == 0 -->
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Crossing</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Finishing</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Heading accuracy</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Short passing</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Volleys</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Dribbling</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Curve</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Free kick accuracy</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Long passing</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Ball control</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Acceleration</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Sprint speed</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Agility</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Reactions</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Balance</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Shot power</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Jumping</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Stamina</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Strength</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Long shots</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Aggression</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Interceptions</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Positioning</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Vision</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Penalties</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Marking</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Standing tackle</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">Sliding tackle</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK diving</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK handling</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK kicking</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK positioning</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <div class="col-md-4 h5">
+                    <div class="col-md-8 text-left">GK reflexes</div><div class="label label-primary col-md-4 text-right" data-bind="text: '--'"></div>
+                </div>
+                <!-- /ko -->
+                <!-- /ko -->
 			</div>
 		</div>
 		<br>
