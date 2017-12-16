@@ -5,7 +5,7 @@ $(document).ready(function () {
 		var self = this;
 		var baseUri = 'http://192.168.160.28/football/api/leagues/';
 		self.className = 'Leagues';
-		self.description = '';
+		self.description = 'This page serves to view the list of leagues with soccer teams.';
 		self.error = ko.observable();
 		self.leagues = ko.observableArray([]);
 		//--- Internal functions

@@ -17,25 +17,29 @@
 <body>
 	<div id="navbar" style="margin-bottom:70px"></div>
 	<div class="container">
-		<table class="table table-striped">
-			<thead>
-				<div class="page-header">
-					<!-- ko foreach: country -->
-					<h2 data-bind="text: name"></h2>
-					<!-- /ko -->
-				</div>
-			</thead>
-			<tbody>
-				<!-- ko foreach: league -->
-				<tr>
-					<td scope="row">
-						<i class="fas fa-spinner fa-pulse"></i>
-							<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
-					</td>
-				</tr>
+		<div class="row">
+			<div class="col-md-12">
+				<!-- ko foreach: country -->
+				<h1 data-bind="text: name"></h1>
 				<!-- /ko -->
-			</tbody>
-		</table>
+			</div>
+			<!-- ko foreach: league -->
+			<!-- ko if:$index()%2 -->
+			<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom: 10px; padding-top: 10px">
+				<i class="fas fa-spinner fa-pulse"></i>
+				<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+			</div>
+			<!-- /ko -->
+			<!-- ko if:!($index()%2) -->
+			<div class="col-md-12" style="padding-bottom: 10px; padding-top: 10px">
+				<i class="fas fa-spinner fa-pulse"></i>
+				<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+			</div>
+			<!-- /ko -->
+			<!-- /ko -->
+		</div>
+		<br>
+		<br>
 		<div class="clearfix"></div>
 		<!-- ko if:error -->
 		<div class="alert alert-danger" data-bind="html:error"></div>
