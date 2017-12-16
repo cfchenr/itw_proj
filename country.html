@@ -19,9 +19,11 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<!-- ko foreach: country -->
-				<h1 data-bind="text: name"></h1>
-				<!-- /ko -->
+				<div class="page-header">
+					<!-- ko foreach: country -->
+					<h1 data-bind="text: name"></h1>
+					<!-- /ko -->
+				</div>
 			</div>
 			<!-- ko foreach: league -->
 			<!-- ko if:$index()%2 -->
