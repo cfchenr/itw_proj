@@ -51,36 +51,36 @@
                 <!-- /ko -->
             </div>
         </div>
-        <!-- ko foreach: attributesHome -->
-        <!-- ko foreach: attributesAway -->
-        <div class="row">
+        
+        <!-- ko foreach: {data: attributesHome, as: 'home'} -->
+        <!-- ko foreach: {data: attributesAway, as: 'away'} -->
             <div class="col-md-12">
                 <div class="col-md-4">
-                    <!-- ko if: buildupplayspeed < $parent.buildupplayspeed -->
+                    <!-- ko if: away.buildupplayspeed < home.buildupplayspeed -->
                     <div class="text-center col-md-12">
                         <h6>Speed</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplayspeed, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.buildupplayspeed, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(buildupplayspeed-$parent.buildupplayspeed) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.buildupplayspeed-home.buildupplayspeed) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplayspeed-$parent.buildupplayspeed) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.buildupplayspeed-home.buildupplayspeed) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplayspeed, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.buildupplayspeed, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplayspeed == $parent.buildupplayspeed -->
+                    <!-- ko if: away.buildupplayspeed == home.buildupplayspeed -->
                     <div class="text-center col-md-12">
                         <h6>Speed</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplayspeed, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplayspeed, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -91,55 +91,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplayspeed, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplayspeed, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplayspeed > $parent.buildupplayspeed -->
+                    <!-- ko if: away.buildupplayspeed > home.buildupplayspeed -->
                     <div class="text-center col-md-12">
                         <h6>Speed</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplayspeed, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.buildupplayspeed, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplayspeed-$parent.buildupplayspeed) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.buildupplayspeed-home.buildupplayspeed) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplayspeed, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.buildupplayspeed, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: buildupplaydribbling < $parent.buildupplaydribbling -->
+                    <!-- ko if: away.buildupplaydribbling < home.buildupplaydribbling -->
                     <div class="text-center col-md-12">
                         <h6>Dribbling</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplaydribbling, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.buildupplaydribbling, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(buildupplaydribbling-$parent.buildupplaydribbling) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.buildupplaydribbling-home.buildupplaydribbling) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplaydribbling-$parent.buildupplaydribbling) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.buildupplaydribbling-home.buildupplaydribbling) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaydribbling, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.buildupplaydribbling, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplaydribbling == $parent.buildupplaydribbling -->
+                    <!-- ko if: away.buildupplaydribbling == home.buildupplaydribbling -->
                     <div class="text-center col-md-12">
                         <h6>Dribbling</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaydribbling, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplaydribbling, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -150,55 +150,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaydribbling, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplaydribbling, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplaydribbling > $parent.buildupplaydribbling -->
+                    <!-- ko if: away.buildupplaydribbling > home.buildupplaydribbling -->
                     <div class="text-center col-md-12">
                         <h6>Dribbling</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplaydribbling, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.buildupplaydribbling, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplaydribbling-$parent.buildupplaydribbling) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.buildupplaydribbling-home.buildupplaydribbling) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaydribbling, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.buildupplaydribbling, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: buildupplaypassing < $parent.buildupplaypassing -->
+                    <!-- ko if: away.buildupplaypassing < home.buildupplaypassing -->
                     <div class="text-center col-md-12">
                         <h6>Passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplaypassing, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.buildupplaypassing, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(buildupplaypassing-$parent.buildupplaypassing) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.buildupplaypassing-home.buildupplaypassing) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(buildupplaypassing-$parent.buildupplaypassing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.buildupplaypassing-home.buildupplaypassing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaypassing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.buildupplaypassing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplaypassing == $parent.buildupplaypassing -->
+                    <!-- ko if: away.buildupplaypassing == home.buildupplaypassing -->
                     <div class="text-center col-md-12">
                         <h6>Passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaypassing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplaypassing, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -209,59 +209,57 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaypassing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.buildupplaypassing, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: buildupplaypassing > $parent.buildupplaypassing -->
+                    <!-- ko if: away.buildupplaypassing > home.buildupplaypassing -->
                     <div class="text-center col-md-12">
                         <h6>Passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.buildupplaypassing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.buildupplaypassing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (buildupplaypassing-$parent.buildupplaypassing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.buildupplaypassing-home.buildupplaypassing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: buildupplaypassing, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.buildupplaypassing, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
             </div>            
-        </div>
-        <div class="row">      
             <div class="col-md-12">      
                 <div class="col-md-4">
-                    <!-- ko if: chancecreationpassing < $parent.chancecreationpassing -->
+                    <!-- ko if: away.chancecreationpassing < home.chancecreationpassing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationpassing, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.chancecreationpassing, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(chancecreationpassing-$parent.chancecreationpassing) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.chancecreationpassing-home.chancecreationpassing) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationpassing-$parent.chancecreationpassing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.chancecreationpassing-home.chancecreationpassing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationpassing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.chancecreationpassing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationpassing == $parent.chancecreationpassing -->
+                    <!-- ko if: away.chancecreationpassing == home.chancecreationpassing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationpassing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationpassing, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -272,55 +270,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationpassing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationpassing, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationpassing > $parent.chancecreationpassing -->
+                    <!-- ko if: away.chancecreationpassing > home.chancecreationpassing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by passing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationpassing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.chancecreationpassing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationpassing-$parent.chancecreationpassing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.chancecreationpassing-home.chancecreationpassing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationpassing, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.chancecreationpassing, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: chancecreationcrossing < $parent.chancecreationcrossing -->
+                    <!-- ko if: away.chancecreationcrossing < home.chancecreationcrossing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by crossing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationcrossing, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.chancecreationcrossing, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(chancecreationcrossing-$parent.chancecreationcrossing) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.chancecreationcrossing-home.chancecreationcrossing) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationcrossing-$parent.chancecreationcrossing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.chancecreationcrossing-home.chancecreationcrossing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationcrossing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.chancecreationcrossing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationcrossing == $parent.chancecreationcrossing -->
+                    <!-- ko if: away.chancecreationcrossing == home.chancecreationcrossing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by crossing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationcrossing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationcrossing, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -331,55 +329,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationcrossing, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationcrossing, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationcrossing > $parent.chancecreationcrossing -->
+                    <!-- ko if: away.chancecreationcrossing > home.chancecreationcrossing -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by crossing</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationcrossing, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.chancecreationcrossing, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationcrossing-$parent.chancecreationcrossing) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.chancecreationcrossing-home.chancecreationcrossing) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationcrossing, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.chancecreationcrossing, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: chancecreationshooting < $parent.chancecreationshooting -->
+                    <!-- ko if: away.chancecreationshooting < home.chancecreationshooting -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by shooting</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationshooting, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.chancecreationshooting, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(chancecreationshooting-$parent.chancecreationshooting) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.chancecreationshooting-home.chancecreationshooting) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(chancecreationshooting-$parent.chancecreationshooting) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.chancecreationshooting-home.chancecreationshooting) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationshooting, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.chancecreationshooting, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationshooting == $parent.chancecreationshooting -->
+                    <!-- ko if: away.chancecreationshooting == home.chancecreationshooting -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by shooting</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationshooting, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationshooting, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -390,59 +388,57 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationshooting, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.chancecreationshooting, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: chancecreationshooting > $parent.chancecreationshooting -->
+                    <!-- ko if: away.chancecreationshooting > home.chancecreationshooting -->
                     <div class="text-center col-md-12">
                         <h6>Chance creation by shooting</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.chancecreationshooting, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.chancecreationshooting, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (chancecreationshooting-$parent.chancecreationshooting) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.chancecreationshooting-home.chancecreationshooting) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: chancecreationshooting, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.chancecreationshooting, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
             </div>                    
-        </div>       
-        <div class="row">    
             <div class="col-md-12">        
                 <div class="col-md-4">
-                    <!-- ko if: defencepressure < $parent.defencepressure -->
+                    <!-- ko if: away.defencepressure < home.defencepressure -->
                     <div class="text-center col-md-12">
                         <h6>Pressure</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defencepressure, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.defencepressure, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(defencepressure-$parent.defencepressure) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.defencepressure-home.defencepressure) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(defencepressure-$parent.defencepressure) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.defencepressure-home.defencepressure) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defencepressure, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.defencepressure, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defencepressure == $parent.defencepressure -->
+                    <!-- ko if: away.defencepressure == home.defencepressure -->
                     <div class="text-center col-md-12">
                         <h6>Pressure</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defencepressure, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defencepressure, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -453,55 +449,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defencepressure, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defencepressure, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defencepressure > $parent.defencepressure -->
+                    <!-- ko if: away.defencepressure > home.defencepressure -->
                     <div class="text-center col-md-12">
                         <h6>Pressure</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defencepressure, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.defencepressure, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (defencepressure-$parent.defencepressure) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.defencepressure-home.defencepressure) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defencepressure, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.defencepressure, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: defenceaggression < $parent.defenceaggression -->
+                    <!-- ko if: away.defenceaggression < home.defenceaggression -->
                     <div class="text-center col-md-12">
                         <h6>Aggression</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defenceaggression, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.defenceaggression, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(defenceaggression-$parent.defenceaggression) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.defenceaggression-home.defenceaggression) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(defenceaggression-$parent.defenceaggression) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.defenceaggression-home.defenceaggression) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceaggression, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.defenceaggression, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defenceaggression == $parent.defenceaggression -->
+                    <!-- ko if: away.defenceaggression == home.defenceaggression -->
                     <div class="text-center col-md-12">
                         <h6>Aggression</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceaggression, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defenceaggression, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -512,55 +508,55 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceaggression, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defenceaggression, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defenceaggression > $parent.defenceaggression -->
+                    <!-- ko if: away.defenceaggression > home.defenceaggression -->
                     <div class="text-center col-md-12">
                         <h6>Aggression</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defenceaggression, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.defenceaggression, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (defenceaggression-$parent.defenceaggression) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.defenceaggression-home.defenceaggression) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceaggression, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.defenceaggression, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
                 <div class="col-md-4">
-                    <!-- ko if: defenceteamwidth < $parent.defenceteamwidth -->
+                    <!-- ko if: away.defenceteamwidth < home.defenceteamwidth -->
                     <div class="text-center col-md-12">
                         <h6>Team width</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defenceteamwidth, style:{color: 'red'}" </h6>
+                        <h6 data-bind="text: home.defenceteamwidth, style:{color: 'red'}" </h6>
                     </div>
                     <div class="progress col-md-8">
-                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(defenceteamwidth-$parent.defenceteamwidth) + '%', opacity:0}">
+                        <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.defenceteamwidth-home.defenceteamwidth) + '%', opacity:0}">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(defenceteamwidth-$parent.defenceteamwidth) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.defenceteamwidth-home.defenceteamwidth) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceteamwidth, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: away.defenceteamwidth, style:{opacity: '0.5'}"></h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defenceteamwidth == $parent.defenceteamwidth -->
+                    <!-- ko if: away.defenceteamwidth == home.defenceteamwidth -->
                     <div class="text-center col-md-12">
                         <h6>Team width</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceteamwidth, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defenceteamwidth, style:{color: 'orange'}" </h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
@@ -571,33 +567,34 @@
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceteamwidth, style:{color: 'orange'}" </h6>
+                        <h6 data-bind="text: away.defenceteamwidth, style:{color: 'orange'}" </h6>
                     </div>
                     <!-- /ko -->
-                    <!-- ko if: defenceteamwidth > $parent.defenceteamwidth -->
+                    <!-- ko if: away.defenceteamwidth > home.defenceteamwidth -->
                     <div class="text-center col-md-12">
                         <h6>Team width</h6>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: $parent.defenceteamwidth, style:{opacity: '0.5'}"></h6>
+                        <h6 data-bind="text: home.defenceteamwidth, style:{opacity: '0.5'}"></h6>
                     </div>
                     <div class="progress col-md-8">
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
                         </div>
-                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (defenceteamwidth-$parent.defenceteamwidth) + '%'}">
+                        <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.defenceteamwidth-home.defenceteamwidth) + '%'}">
                         </div>
                         <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
                         </div>
                     </div>
                     <div class="text-center col-md-2">
-                        <h6 data-bind="text: defenceteamwidth, style:{color: 'blue'}" </h6>
+                        <h6 data-bind="text: away.defenceteamwidth, style:{color: 'blue'}" </h6>
                     </div>
                     <!-- /ko -->
                 </div>
-            </div>                            
-        </div>
+            </div>                           
         <!-- /ko -->
         <!-- /ko -->
+        
+        
         <div class="row">
             <div class="col-md-12">
                 <table class="table">
