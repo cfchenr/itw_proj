@@ -101,6 +101,7 @@ $(document).ready(function () {
 		self.getCountCountries();
 		self.getCountLeagues();
 		self.getCountSeasons();
+		self.reset();		
 	};
 	ko.applyBindings(vm);
 });
