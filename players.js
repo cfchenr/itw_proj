@@ -40,7 +40,7 @@ $(document).ready(function () {
             self.search($("#name").val());
 			self.players(null);
         }
-		
+		self.reset();		
 	};
 	ko.applyBindings(vm);
 });

@@ -34,17 +34,45 @@
 				<hr>
 			</div>
 			<div class="col-md-12">
+				<!-- ko if: players -->
+                <i style="opacity: 0.5; width:32px" class="fas fa-search"></i>
+                <span style="opacity: 0.5;"data-bind="text: 'Players found: '+players().length"></span>
+				<!-- /ko -->
+				<!-- ko if: players -->
+				<div class="col-md-12 page-header">
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<h5>Player name</h5>
+					</div>
+					<div class="col-md-2 text-right">
+						<h5>View</h5>
+					</div>
+				</div>
+				<!-- /ko -->
 				<!-- ko foreach: players -->
 				<!-- ko if: !($index()%2)-->
 				<div class="col-md-12" style="padding-bottom:10px; padding-top:10px">
-					<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
-					<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
+						<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+					</div>
+					<div class="col-md-2 text-right">
+						<a class="btn btn-primary" data-bind="attr: {href:'player.html?id='+id}">
+							<i class="fa fa-eye"></i>
+						</a>
+					</div>	
 				</div>
 				<!-- /ko -->
 				<!-- ko if: $index()%2 -->
 				<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom:10px; padding-top:10px">
-					<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
-					<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
+						<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+					</div>
+					<div class="col-md-2 text-right">
+						<a class="btn btn-primary" data-bind="attr: {href:'player.html?id='+id}">
+							<i class="fa fa-eye"></i>
+						</a>
+					</div>	
 				</div>
 				<!-- /ko -->
 				<!-- /ko -->

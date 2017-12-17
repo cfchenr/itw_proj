@@ -39,7 +39,8 @@ $(document).ready(function () {
             console.log('CALL: resetTeams...');
             self.search($("#name").val());
 			self.teams(null);
-        }
+		}
+		self.reset();
 		
 	};
 	ko.applyBindings(vm);
