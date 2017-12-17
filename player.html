@@ -29,10 +29,12 @@
                             <!-- ko if: player_fifa_api_id -->
                             <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/16/players/'+player_fifa_api_id+'.png'}"></img>
                             <h1 data-bind="text: player_name"></h1>
+                            <a class="btn btn-primary" data-bind="attr:{href: 'comparePlayer.html?id='+id}"><i class="fas fa-chart-bar"></i> Compare player</a>
                             <!-- /ko -->
                             <!-- ko if: !player_fifa_api_id -->
                             <img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
                             <h1 data-bind="text: player_name"></h1>
+                            <a class="btn btn-primary" data-bind="attr:{href: 'comparePlayer.html?id='+id}"><i class="fas fa-chart-bar"></i> Compare player</a>
                             <!-- /ko -->
                             <!-- /ko -->
                         </div>
