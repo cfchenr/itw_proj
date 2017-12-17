@@ -23,22 +23,50 @@
 					<!-- ko foreach: country -->
 					<h1 data-bind="text: name"></h1>
 					<!-- /ko -->
+					<!-- ko if: league -->
+					<i style="opacity: 0.5; width:32px" class="fas fa-search"></i>
+					<span style="opacity: 0.5;"data-bind="text: 'Leagues found: '+league().length"></span>
+					<!-- /ko -->
 				</div>
 			</div>
-			<!-- ko foreach: league -->
-			<!-- ko if:$index()%2 -->
-			<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom: 10px; padding-top: 10px">
-				<i class="fas fa-spinner fa-pulse"></i>
-				<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+			<div class="col-md-12">
+				<div class="col-md-12 page-header">
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<h5>League name</h5>
+					</div>
+					<div class="col-md-2 text-right">
+						<h5>View</h5>
+					</div>
+				</div>
+				<!-- ko foreach: league -->
+				<!-- ko if:$index()%2 -->
+				<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom: 10px; padding-top: 10px">
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<i class="fas fa-spinner fa-pulse"></i>
+						<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+					</div>
+					<div class="col-md-2 text-right">
+						<a class="btn btn-sm" data-bind="attr: {href:'league.html?id='+id}">
+							<i class="fa fa-eye"></i>
+						</a>
+					</div>
+				</div>
+				<!-- /ko -->
+				<!-- ko if:!($index()%2) -->
+				<div class="col-md-12" style="padding-bottom: 10px; padding-top: 10px">
+					<div class="col-md-10 col-sm-10 col-xs-10">
+						<i class="fas fa-spinner fa-pulse"></i>
+						<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
+					</div>
+					<div class="col-md-2 text-right">
+						<a class="btn btn-sm" data-bind="attr: {href:'league.html?id='+id}">
+							<i class="fa fa-eye"></i>
+						</a>
+					</div>
+				</div>
+				<!-- /ko -->
+				<!-- /ko -->
 			</div>
-			<!-- /ko -->
-			<!-- ko if:!($index()%2) -->
-			<div class="col-md-12" style="padding-bottom: 10px; padding-top: 10px">
-				<i class="fas fa-spinner fa-pulse"></i>
-				<a data-bind="html: name, attr:{href: 'league.html?id='+id, title: name}"></a>
-			</div>
-			<!-- /ko -->
-			<!-- /ko -->
 		</div>
 		<div class="row">
 			<div class="col-sm-12 col-md-12 text-left">
