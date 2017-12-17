@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
@@ -673,7 +673,9 @@
                             <div class="modal-header">
                                 <div class="row text-center">
                                     <img width="42px" data-bind="attr: {src:'https://cdn.sofifa.org/48/'+$parent.season+'/players/' + player_fifa_api_id + '.png'}"></img>
-                                    <h3 class="modal-title" id="modalTitle" data-bind="text: player_name"></h3>
+                                    <a data-bind="attr: {href:'player.html?id='+id}">
+                                        <h3 class="modal-title" id="modalTitle" data-bind="text: player_name"></h3>
+                                    </a>
                                 </div>
                             </div>
                             <div class="modal-body">

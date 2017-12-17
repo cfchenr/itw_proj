@@ -1,5 +1,7 @@
 $(document).ready(function () {
-	$("#navbar").load('navbar.html');
+	$('#navbar').load('navbar.html', function () {
+		$("#iNav").addClass("active");
+	});
 	var vm = function () {
 		console.log('ViewModel initiated...');
 		//---Variáveis locais
@@ -12,7 +14,7 @@ $(document).ready(function () {
 		var baseUri5 = 'http://192.168.160.28/football/api/seasons';
 		var baseUri6 = 'http://192.168.160.28/football/api/matches';
 		var baseUriPlayers = 'http://192.168.160.28/football/api/players/search?srcStr=';
-        var baseUriTeams = 'http://192.168.160.28/football/api/teams/search?srcStr=';
+		var baseUriTeams = 'http://192.168.160.28/football/api/teams/search?srcStr=';
 
 		self.className = 'Index';
 		self.description = 'This page serves to view many details.';
@@ -23,8 +25,8 @@ $(document).ready(function () {
 		self.countLeagues = ko.observable();
 		self.countSeasons = ko.observable();
 		self.search = ko.observable();
-        self.players = ko.observableArray([]);
-		self.teams = ko.observableArray([]); 	
+		self.players = ko.observableArray([]);
+		self.teams = ko.observableArray([]);
 
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
@@ -73,32 +75,32 @@ $(document).ready(function () {
 			});
 		};
 		self.getPlayers = function () {
-            console.log('CALL: getPlayers...');
+			console.log('CALL: getPlayers...');
 			self.search($("#name").val());
-			ajaxHelper(baseUriPlayers+self.search(), 'GET').done(function (data) {
+			ajaxHelper(baseUriPlayers + self.search(), 'GET').done(function (data) {
 				self.players(data);
 			});
-        };
-        self.getTeams = function () {
-            console.log('CALL: getTeams...');
-            self.search($("#name").val());
-			ajaxHelper(baseUriTeams+self.search(), 'GET').done(function (data) {
+		};
+		self.getTeams = function () {
+			console.log('CALL: getTeams...');
+			self.search($("#name").val());
+			ajaxHelper(baseUriTeams + self.search(), 'GET').done(function (data) {
 				self.teams(data);
 				self.getPlayers()
 			});
 		};
-        self.reset = function() {
-            console.log('CALL: resetSearch...');
-            self.search($("#name").val());
-            self.players(null);
-			self.teams(null);            
-        }
+		self.reset = function () {
+			console.log('CALL: resetSearch...');
+			self.search($("#name").val());
+			self.players(null);
+			self.teams(null);
+		}
 		//--- Initial call
 		self.getCountTeams();
 		self.getCountPlayers();
 		self.getCountCountries();
 		self.getCountLeagues();
-		self.getCountSeasons();		
+		self.getCountSeasons();
 	};
 	ko.applyBindings(vm);
 });

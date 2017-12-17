@@ -26,21 +26,21 @@
 				<div class="item active">
 					<div alt="ballon_d'or_2017" style="height: 400px;width: 100%;background-size: cover;background-position:center; background-image: url(http://www.bostonherald.com/sites/default/files/styles/featured_big/public/media/ap/2017/12/09/5349338de881469e9f21aa33039c8938.jpg?itok=odZtLupe)"></div>
 					<div class="carousel-caption d-none d-md-block">
-						<h2>Ballon d'or 2017</h2>
+						<h2 style="color: white">Ballon d'or 2017</h2>
 						<p>Cristiano Ronaldo</p>
 					</div>
 				</div>
 				<div class="item">
 					<div alt="ballon_d'or_2017" style="height: 400px;width: 100%;background-size: cover;background-position:center; background-image: url(http://c.files.bbci.co.uk/vivo/live/images/2016/7/10/44d79f24-01e5-45a5-a554-a1847dc9ccb6.jpg)"></div>
 					<div class="carousel-caption d-none d-md-block">
-						<h2>Euro 2016</h2>
+						<h2 style="color: white">Euro 2016</h2>
 						<p>Portugal</p>
 					</div>
 				</div>
 				<div class="item">
 					<div alt="ballon_d'or_2017" style="height: 400px;width: 100%;background-size: cover;background-position:center; background-image: url(https://mediasa01.blob.core.windows.net/renascenca/0596221774637b14.jpg)"></div>
 					<div class="carousel-caption d-none d-md-block">
-						<h2>Liga ZON Sagres</h2>
+						<h2 style="color: white">Liga ZON Sagres</h2>
 						<p>Benfica tetra campeão</p>
 					</div>
 				</div>
@@ -48,26 +48,40 @@
 		</div>
 	</div>
 	<div class="container">
-
 		<div class="row">
-			<div class="col-md-6">
-				<h4 class="alert alert-primary text-center" style="margin-bottom: -20px"><span class="fa fa-flag"></span> Countries
-					<span class="badge" data-bind="text: countCountries"></span>
-				</h4>
-				<h4 class="alert alert-primary text-center" style="margin-bottom: -20px"><span class="fa fa-sitemap"></span> Leagues
-					<span class="badge" data-bind="text: countLeagues"></span>
-				</h4>
-				<h4 class="alert alert-primary text-center" style="margin-bottom: -20px"><span class="fa fa-trophy"></span> Seasons
-					<span class="badge" data-bind="text: countSeasons"></span>
-				</h4>
-				<h4 class="alert alert-primary text-center" style="margin-bottom: -20px"><span class="fa fa-users"></span> Teams
-					<span class="badge" data-bind="text: countTeams"></span>
-				</h4>
-				<h4 class="alert alert-primary text-center" style="margin-bottom: -20px"><span class="fa fa-user"></span> Players
-					<span class="badge" data-bind="text: countPlayers"></span>
-				</h4>
+			<div class="col-md-12" style="margin-top: 40px">
+				<a href="countries.html">
+					<h4 class="alert alert-primary text-center col-md-2 col-md-offset-1" style="margin-bottom: -20px">
+						<span class="fa fa-flag"></span> Countries
+						<span class="badge" data-bind="text: countCountries"></span>
+					</h4>
+				</a>
+				<a href="leagues.html">
+					<h4 class="alert alert-primary text-center col-md-2" style="margin-bottom: -20px">
+						<span class="fa fa-sitemap"></span> Leagues
+						<span class="badge" data-bind="text: countLeagues"></span>
+					</h4>
+				</a>
+				<a href="leagues.html">
+					<h4 class="alert alert-primary text-center col-md-2" style="margin-bottom: -20px">
+						<span class="fa fa-trophy"></span> Seasons
+						<span class="badge" data-bind="text: countSeasons"></span>
+					</h4>
+				</a>
+				<a href="teams.html">
+					<h4 class="alert alert-primary text-center col-md-2" style="margin-bottom: -20px">
+						<span class="fa fa-users"></span> Teams
+						<span class="badge" data-bind="text: countTeams"></span>
+					</h4>
+				</a>
+				<a href="players.html">
+					<h4 class="alert alert-primary text-center col-md-2" style="margin-bottom: -20px">
+						<span class="fa fa-user"></span> Players
+						<span class="badge" data-bind="text: countPlayers"></span>
+					</h4>
+				</a>
 			</div>
-			<div class="col-md-6" style="margin-top: 20px">
+			<div class="col-md-12 text-center" style="margin-top: 60px">
 				<form class="form-inline">
 					<label for="name" class="control-label">Search </label>
 					<input class="form-control" type="text" name="name" id="name" data-bind="text: search">
@@ -76,62 +90,68 @@
 				</form>
 			</div>
 			<div class="col-md-12">
-					<div class="page-header">
-						<h1 data-bind="text: 'Players'"></h1>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<!-- ko foreach: players -->
-					<!-- ko if: !($index()%2)-->
-					<div class="col-md-12" style="padding-bottom:10px; padding-top:10px">
-						<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
-						<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
-					</div>
+				<hr>
+				<h3>
+					<span class="fa fa-users"></span> Teams</h3>
+			</div>
+			<div class="col-md-12">
+				<!-- ko foreach: teams -->
+				<!-- ko if:$index()%2 -->
+				<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom: 10px; padding-top: 10px">
+					<!-- ko if: team_fifa_api_id -->
+					<img width="32px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+					<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 					<!-- /ko -->
-					<!-- ko if: $index()%2 -->
-					<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom:10px; padding-top:10px">
-						<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
-						<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
-					</div>
-					<!-- /ko -->
+					<!-- ko if: !team_fifa_api_id -->
+					<i style="width:32px; height:22px" class="fas fa-spinner fa-pulse"></i>
+					<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 					<!-- /ko -->
 				</div>
-				<div class="col-md-12">
-					<div class="page-header">
-						<h1 data-bind="text: 'Teams'"></h1>
-					</div>
-				</div>
-				<div class="col-md-12">
-					<!-- ko foreach: teams -->
-					<!-- ko if:$index()%2 -->
-					<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom: 10px; padding-top: 10px">
-						<!-- ko if: team_fifa_api_id -->
-						<img width="32px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
-						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
-						<!-- /ko -->
-						<!-- ko if: !team_fifa_api_id -->
-						<i style="width:32px; height:22px" class="fas fa-spinner fa-pulse"></i>
-						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
-						<!-- /ko -->
-					</div>
+				<!-- /ko -->
+				<!-- ko if:!($index()%2) -->
+				<div class="col-md-12" style="padding-bottom: 10px; padding-top: 10px">
+					<!-- ko if: team_fifa_api_id -->
+					<img width="32px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
+					<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 					<!-- /ko -->
-					<!-- ko if:!($index()%2) -->
-					<div class="col-md-12" style="padding-bottom: 10px; padding-top: 10px">
-						<!-- ko if: team_fifa_api_id -->
-						<img width="32px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
-						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
-						<!-- /ko -->
-						<!-- ko if: !team_fifa_api_id -->
-						<i style="width:32px; height:22px" class="fas fa-spinner fa-pulse"></i>
-						<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
-						<!-- /ko -->
-					</div>
-					<!-- /ko -->
+					<!-- ko if: !team_fifa_api_id -->
+					<i style="width:32px; height:22px" class="fas fa-spinner fa-pulse"></i>
+					<a data-bind="html: team_long_name, attr:{href: 'team.html?id='+id, title: team_long_name}"></a>
 					<!-- /ko -->
 				</div>
+				<!-- /ko -->
+				<!-- /ko -->
+			</div>
+			<div class="col-md-12">
+				<hr>
+				<h3>
+					<span class="fa fa-user"></span> Players</h3>
+			</div>
+			<div class="col-md-12">
+				<!-- ko foreach: players -->
+				<!-- ko if: !($index()%2)-->
+				<div class="col-md-12" style="padding-bottom:10px; padding-top:10px">
+					<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
+					<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+				</div>
+				<!-- /ko -->
+				<!-- ko if: $index()%2 -->
+				<div class="col-md-12" style="background-color: #e1e1e1; padding-bottom:10px; padding-top:10px">
+					<img width="32px" data-bind="attr: {src:'https://cdn.sofifa.org/48/16/players/' + player_fifa_api_id + '.png'}"></img>
+					<a data-bind="text: player_name, attr:{href: 'player.html?id=' + id}"></a>
+				</div>
+				<!-- /ko -->
+				<!-- /ko -->
+			</div>
 		</div>
+		<br>
+		<br>
+		<div class="clearfix"></div>
+		<!-- ko if:error -->
+		<div class="alert alert-danger" data-bind="html:error"></div>
+		<!-- /ko -->
+		<div class="alert alert-success" data-bind="html:description"></div>
 	</div>
-
 	<!-- Optional JavaScript -->
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	<script src="knockout-3.4.2.js"></script>
