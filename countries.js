@@ -1,5 +1,8 @@
 $(document).ready(function () {
-	var vm = function() {
+	$('#navbar').load('navbar.html', function () {
+		$("#cNav").addClass("active");
+	});
+	var vm = function () {
 		console.log('ViewModel initiated...');
 		//---Variáveis locais
 		var self = this;
@@ -17,16 +20,16 @@ $(document).ready(function () {
 				dataType: 'json',
 				contentType: 'application/json',
 				data: data ? JSON.stringify(data) : null,
-				error: function(jqXHR, textStatus, errorThrown) {
+				error: function (jqXHR, textStatus, errorThrown) {
 					console.log("AJAX Call [" + uri + "] Fail...");
 					self.error(errorThrown);
 				}
 			})
 		}
 		//--- External functions (accessible outside)
-		self.getCountries = function() {
+		self.getCountries = function () {
 			console.log('CALL: getCountries...');
-			ajaxHelper(baseUri, 'GET').done(function(data) {
+			ajaxHelper(baseUri, 'GET').done(function (data) {
 				self.countries(data);
 			});
 		};

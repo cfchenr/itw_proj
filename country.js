@@ -1,4 +1,7 @@
 $(document).ready(function () {
+	$('#navbar').load('navbar.html', function() {
+		$("#cNav").addClass("active");
+	});	
 	var vm = function() {
 		console.log('ViewModel initiated...');
 		//---Variáveis locais

@@ -7,7 +7,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="bootstrap.min.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
@@ -38,11 +38,12 @@
 					<!-- ko foreach: team -->
 					<!-- ko if: team_fifa_api_id -->
 					<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
-					<h1 data-bind="text: team_long_name"></h1>
+					<h1 data-bind="text: team_long_name+' ('+team_short_name+')'"></h1>
 					<!-- /ko -->
 					<!-- ko if: !team_fifa_api_id -->
 					<img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
 					<h1 data-bind="text: team_long_name"></h1>
+					<h1 data-bind="text: team_long_name+' ('+team_short_name+')'"></h1>
 					<!-- /ko -->
 					<!-- /ko -->
 				</div>
@@ -1063,7 +1064,6 @@
 	 crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
 	 crossorigin="anonymous"></script>
-	<script src="./main.js"></script>
 	<script src="./team.js"></script>
 	<script>
 		$(function () {
