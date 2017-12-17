@@ -3,7 +3,7 @@ $(document).ready(function () {
 		$("#tNav").addClass("active");
 	});
 	var vm = function () {
-		console.log('ViewModel initiated...');
+		//console.log('ViewModel initiated...');
 		//---Variáveis locais
 		var self = this;
 		var baseUri = 'http://192.168.160.28/football/api/teams/search?srcStr=';
@@ -22,21 +22,21 @@ $(document).ready(function () {
 				contentType: 'application/json',
 				data: data ? JSON.stringify(data) : null,
 				error: function (jqXHR, textStatus, errorThrown) {
-					console.log("AJAX Call [" + uri + "] Fail...");
+					//console.log("AJAX Call [" + uri + "] Fail...");
 					self.error(errorThrown);
 				}
 			})
 		}
 		//--- External functions (accessible outside)
 		self.getTeams = function () {
-            console.log('CALL: getTeams...');
+            //console.log('CALL: getTeams...');
             self.search($("#name").val());
 			ajaxHelper(baseUri+self.search(), 'GET').done(function (data) {
                 self.teams(data);
 			});
         };
         self.reset = function() {
-            console.log('CALL: resetTeams...');
+            //console.log('CALL: resetTeams...');
             self.search($("#name").val());
 			self.teams(null);
 		}

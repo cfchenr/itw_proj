@@ -3,7 +3,7 @@ $(document).ready(function () {
         $("#pNav").addClass("active");
     });
     var vm = function () {
-        console.log('ViewModel initiated...');
+        //console.log('ViewModel initiated...');
         //---Variáveis locais
         var self = this;
         var url = window.location.href;
@@ -31,14 +31,14 @@ $(document).ready(function () {
                 contentType: 'application/json',
                 data: data ? JSON.stringify(data) : null,
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("AJAX Call [" + uri + "] Fail...");
+                    //console.log("AJAX Call [" + uri + "] Fail...");
                     self.error(errorThrown);
                 }
             })
         }
         //--- External functions (accessible outside)
         self.getFirstPlayer = function () {
-            console.log('CALL: getFirstPlayer...');
+            //console.log('CALL: getFirstPlayer...');
             ajaxHelper('http://192.168.160.28/football/api/players/' + self.firstPlayer, 'GET').done(function (data) {
                 self.attributesHome(data.player_attributes);
                 getFirstPlayer1();
@@ -46,7 +46,7 @@ $(document).ready(function () {
             });
         };
         self.getFirstPlayer1 = function () {
-            console.log('CALL: getFirstPlayer1...');
+            //console.log('CALL: getFirstPlayer1...');
             ajaxHelper('http://192.168.160.28/football/api/players/' + self.firstPlayer, 'GET').done(function (data) {
                 self.firstPlayer1(data.player_fifa_api_id);
                 self.firstPlayerid(data.id);                
@@ -55,16 +55,16 @@ $(document).ready(function () {
             });
         };
         self.getSecondPlayer = function () {
-            console.log('CALL: getSecondPlayer...');
+            //console.log('CALL: getSecondPlayer...');
             ajaxHelper('http://192.168.160.28/football/api/players/' + self.secondPlayer, 'GET').done(function (data) {
                 self.attributesAway(data.player_attributes);
-                console.log(self.attributesAway());
+                //console.log(self.attributesAway());
                 getSecondPlayer1();
 
             });
         };
         self.getSecondPlayer1 = function () {
-            console.log('CALL: getSecondPlayer1...');
+            //console.log('CALL: getSecondPlayer1...');
             ajaxHelper('http://192.168.160.28/football/api/players/' + self.secondPlayer, 'GET').done(function (data) {
                 self.secondPlayer1(data.player_fifa_api_id);
                 self.secondPlayerid(data.id);

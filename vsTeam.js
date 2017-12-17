@@ -3,7 +3,7 @@ $(document).ready(function () {
         $("#tNav").addClass("active");
     });
     var vm = function () {
-        console.log('ViewModel initiated...');
+        //console.log('ViewModel initiated...');
         //---Variáveis locais
         var self = this;
         var url = window.location.href;
@@ -31,7 +31,7 @@ $(document).ready(function () {
                 contentType: 'application/json',
                 data: data ? JSON.stringify(data) : null,
                 error: function (jqXHR, textStatus, errorThrown) {
-                    console.log("AJAX Call [" + uri + "] Fail...");
+                    //console.log("AJAX Call [" + uri + "] Fail...");
                     self.error(errorThrown);
                 }
             })
@@ -50,7 +50,7 @@ $(document).ready(function () {
             });
         };
         self.getFirstTeam1 = function () {
-            console.log('CALL: getFirstTeam1...');
+            //console.log('CALL: getFirstTeam1...');
             ajaxHelper('http://192.168.160.28/football/api/teams/' + self.firstTeam, 'GET').done(function (data) {
                 self.firstTeam1(data.team_fifa_api_id);
                 self.firstTeamid(data.id);                
@@ -59,7 +59,7 @@ $(document).ready(function () {
             });
         };
         self.getSecondTeam = function () {
-            console.log('CALL: getSecondTeam...');
+            //console.log('CALL: getSecondTeam...');
             ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.secondTeam, 'GET').done(function (data) {
                 for (var k = 0; k < data.length; k++) {
                     if (data[k].Label.substr(7, 2) == 16) {
@@ -71,7 +71,7 @@ $(document).ready(function () {
             });
         };
         self.getSecondTeam1 = function () {
-            console.log('CALL: getSecondTeam1...');
+            //console.log('CALL: getSecondTeam1...');
             ajaxHelper('http://192.168.160.28/football/api/teams/' + self.secondTeam, 'GET').done(function (data) {
                 self.secondTeam1(data.team_fifa_api_id);
                 self.secondTeamid(data.id);

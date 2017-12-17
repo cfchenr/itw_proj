@@ -3,7 +3,7 @@ $(document).ready(function () {
 		$("#cNav").addClass("active");
 	});	
 	var vm = function() {
-		console.log('ViewModel initiated...');
+		//console.log('ViewModel initiated...');
 		//---Variáveis locais
 		var self = this;
 		var url = window.location.href;
@@ -24,17 +24,17 @@ $(document).ready(function () {
 				contentType: 'application/json',
 				data: data ? JSON.stringify(data) : null,
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log("AJAX Call [" + uri + "] Fail...");
+					//console.log("AJAX Call [" + uri + "] Fail...");
 					self.error(errorThrown);
 				}
 			})
 		}
 		//--- External functions (accessible outside)
 		self.getCountry = function() {
-			console.log('CALL: getCountry...');
+			//console.log('CALL: getCountry...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
 				self.country(data);
-				console.log('CALL: getCountryLeagues...');
+				//console.log('CALL: getCountryLeagues...');
 				baseUri = 'http://192.168.160.28/football/api/countries/countryLeagues/'+data.id;
 				ajaxHelper(baseUri, 'GET').done(function(data) {
 					self.league(data);

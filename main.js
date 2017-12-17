@@ -3,7 +3,7 @@ $(document).ready(function () {
 		$("#iNav").addClass("active");
 	});
 	var vm = function () {
-		console.log('ViewModel initiated...');
+		//console.log('ViewModel initiated...');
 		//---Variáveis locais
 		var self = this;
 		var url = window.location.href;
@@ -38,51 +38,51 @@ $(document).ready(function () {
 				contentType: 'application/json',
 				data: data ? JSON.stringify(data) : null,
 				error: function (jqXHR, textStatus, errorThrown) {
-					console.log("AJAX Call [" + uri + "] Fail...");
+					//console.log("AJAX Call [" + uri + "] Fail...");
 					self.error(errorThrown);
 				}
 			})
 		}
 		//--- External functions (accessible outside)
 		self.getCountTeams = function () {
-			console.log('CALL: getCountTeams...');
+			//console.log('CALL: getCountTeams...');
 			ajaxHelper(baseUri1, 'GET').done(function (data) {
 				self.countTeams(data);
 			});
 		};
 		self.getCountPlayers = function () {
-			console.log('CALL: getCountPlayers...');
+			//console.log('CALL: getCountPlayers...');
 			ajaxHelper(baseUri2, 'GET').done(function (data) {
 				self.countPlayers(data);
 			});
 		};
 		self.getCountCountries = function () {
-			console.log('CALL: getCountCountries...');
+			//console.log('CALL: getCountCountries...');
 			ajaxHelper(baseUri3, 'GET').done(function (data) {
 				self.countCountries(data.length);
 			});
 		};
 		self.getCountLeagues = function () {
-			console.log('CALL: getCountLeagues...');
+			//console.log('CALL: getCountLeagues...');
 			ajaxHelper(baseUri4, 'GET').done(function (data) {
 				self.countLeagues(data.length);
 			});
 		};
 		self.getCountSeasons = function () {
-			console.log('CALL: getCountSeasons...');
+			//console.log('CALL: getCountSeasons...');
 			ajaxHelper(baseUri5, 'GET').done(function (data) {
 				self.countSeasons(data.length);
 			});
 		};
 		self.getPlayers = function () {
-			console.log('CALL: getPlayers...');
+			//console.log('CALL: getPlayers...');
 			self.search($("#name").val());
 			ajaxHelper(baseUriPlayers + self.search(), 'GET').done(function (data) {
 				self.players(data);
 			});
 		};
 		self.getTeams = function () {
-			console.log('CALL: getTeams...');
+			//console.log('CALL: getTeams...');
 			self.search($("#name").val());
 			ajaxHelper(baseUriTeams + self.search(), 'GET').done(function (data) {
 				self.teams(data);
@@ -90,7 +90,7 @@ $(document).ready(function () {
 			});
 		};
 		self.reset = function () {
-			console.log('CALL: resetSearch...');
+			//console.log('CALL: resetSearch...');
 			self.search($("#name").val());
 			self.players(null);
 			self.teams(null);

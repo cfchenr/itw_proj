@@ -3,7 +3,7 @@ $(document).ready(function () {
 		$("#tNav").addClass("active");
 	});
 	var vm = function() {
-		console.log('ViewModel initiated...');
+		//console.log('ViewModel initiated...');
 		//---Variáveis locais
         var self = this;
         var url = window.location.href;
@@ -27,14 +27,14 @@ $(document).ready(function () {
 				contentType: 'application/json',	
 				data: data ? JSON.stringify(data) : null,
 				error: function(jqXHR, textStatus, errorThrown) {
-					console.log("AJAX Call [" + uri + "] Fail...");
+					//console.log("AJAX Call [" + uri + "] Fail...");
 					self.error(errorThrown);
 				}
 			})
 		}
 		//--- External functions (accessible outside)
 		self.getMatch = function() {
-			console.log('CALL: getMatch...');
+			//console.log('CALL: getMatch...');
 			ajaxHelper(baseUri, 'GET').done(function(data) {
                 var seasonValue = '[{ "season": "' + data.season.split("/")[1].charAt(2) + data.season.split("/")[1].charAt(3) + '"}]';
                 self.seasonsIdx(JSON.parse(seasonValue));
@@ -45,7 +45,7 @@ $(document).ready(function () {
 			});
 		};
 		self.getPlayers = function() {
-			console.log('CALL: getPlayers...');
+			//console.log('CALL: getPlayers...');
 			for(var i = 0; i < self.match().Home_player.length; i++) {
 				idP = self.match().Home_player[i].id;
 				ajaxHelper('http://192.168.160.28/football/api/players/'+idP, 'GET').done(function(data) {
@@ -60,7 +60,7 @@ $(document).ready(function () {
 			}
 		};
 		self.getTeamHome = function() {
-			console.log('CALL: getTeamHome...');
+			//console.log('CALL: getTeamHome...');
 			ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().home_team.id, 'GET').done(function(data) {
 				for(var k = 0; k < data.length; k++) {
 					if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
@@ -70,7 +70,7 @@ $(document).ready(function () {
 			});
 		};
 		self.getTeamAway = function() {
-			console.log('CALL: getTeamAway...');
+			//console.log('CALL: getTeamAway...');
 			ajaxHelper('http://192.168.160.28/football/api/teams/seasons/' + self.match().away_team.id, 'GET').done(function(data) {
 				for(var k = 0; k < data.length; k++) {
 					if(data[k].Label.substr(7,2) == self.seasonsIdx()[0].season) {
