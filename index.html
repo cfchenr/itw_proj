@@ -83,10 +83,18 @@
 			</div>
 			<div class="col-md-12 text-center" style="margin-top: 60px">
 				<form class="form-inline">
-					<label for="name" class="control-label">Search </label>
-					<input class="form-control" type="text" name="name" id="name" data-bind="text: search">
-					<button type="submit" data-bind="click: getTeams" class="btn btn-primary">Search</button>
-					<button type="reset" data-bind="click: reset" class="btn btn-default">Reset</button>
+					<div class="input-group">
+						<span class="input-group-addon"><i class="fa fa-list"></i> Search</span>
+						<input type="text" class="form-control" placeholder="Search" name="name" id="name" data-bind="text: search">
+						<div class="input-group-btn">
+							<button class="btn btn-default" data-bind="click: getTeams"  type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+							<button class="btn btn-default" data-bind="click: reset" type="submit">
+								<i class="fa fa-trash"></i>
+							</button>
+						</div>
+					</div>
 				</form>
 			</div>
 			<div class="col-md-12">
