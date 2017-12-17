@@ -1,0 +1,2042 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Massau Football</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    <link rel="stylesheet" type="text/css" href="appStyle.css">
+</head>
+
+<body>
+    <div id="navbar" style="margin-bottom:70px"></div>
+    <div class="container">
+        <div class="page-header">
+            <div class="row" style="margin-bottom:10px">
+                <div class="col-md-12 text-center">
+                    <div class="col-md-1">
+                        <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/16/players/'+firstPlayer1()+'.png'}"></img>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-md-10 text-center">
+                            <h2>
+                                <a data-bind="html: firstPlayerName, attr:{href: 'player.html?id='+firstPlayerid(), title: firstPlayerName}"></a>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="col-md-10 text-center">
+                            <h2>
+                                <a data-bind="html: secondPlayerName, attr:{href: 'player.html?id='+secondPlayerid(), title: secondPlayerName}"></a>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-1">
+                        <img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/16/players/'+secondPlayer1()+'.png'}"></img>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 col-md-12 text-left">
+                <h3>
+                    <span class="fas fa-exchange-alt" data-fa-transform="rotate-90"></span> Player comparation
+                </h3>
+            </div>
+        </div>
+        <!-- ko foreach: {data: attributesHome, as: 'home'} -->
+        <!-- ko foreach: {data: attributesAway, as: 'away'} -->
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.crossing < home.crossing -->
+                <div class="text-center col-md-12">
+                    <h6>Crossing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.crossing, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.crossing-home.crossing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.crossing-home.crossing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.crossing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.crossing == home.crossing -->
+                <div class="text-center col-md-12">
+                    <h6>Crossing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.crossing, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.crossing, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.crossing > home.crossing -->
+                <div class="text-center col-md-12">
+                    <h6>Crossing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.crossing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.crossing-home.crossing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.crossing, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.finishing < home.finishing -->
+                <div class="text-center col-md-12">
+                    <h6>Finishing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.finishing, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.finishing-home.finishing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.finishing-home.finishing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.finishing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.finishing == home.finishing -->
+                <div class="text-center col-md-12">
+                    <h6>Finishing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.finishing, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.finishing, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.finishing > home.finishing -->
+                <div class="text-center col-md-12">
+                    <h6>Finishing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.finishing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.finishing-home.finishing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.finishing, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.heading_accuracy < home.heading_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Heading Accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.heading_accuracy, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.heading_accuracy-home.heading_accuracy)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.heading_accuracy-home.heading_accuracy)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.heading_accuracy, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.heading_accuracy == home.heading_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Heading Accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.heading_accuracy, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.heading_accuracy, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.heading_accuracy > home.heading_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Heading Accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.heading_accuracy, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.heading_accuracy-home.heading_accuracy)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.heading_accuracy, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.short_passing < home.short_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Short Passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.short_passing, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.short_passing-home.short_passing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.short_passing-home.short_passing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.short_passing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.short_passing == home.short_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Short Passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.short_passing, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.short_passing, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.short_passing > home.short_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Short Passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.short_passing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.short_passing-home.short_passing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.short_passing, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.volleys < home.volleys -->
+                <div class="text-center col-md-12">
+                    <h6>Volleys</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.volleys, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.volleys-home.volleys)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.volleys-home.volleys)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.volleys, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.volleys == home.volleys -->
+                <div class="text-center col-md-12">
+                    <h6>Volleys</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.volleys, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.volleys, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.volleys > home.volleys -->
+                <div class="text-center col-md-12">
+                    <h6>Volleys</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.volleys, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.volleys-home.volleys)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.volleys, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.dribbling < home.dribbling -->
+                <div class="text-center col-md-12">
+                    <h6>Dribbling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.dribbling, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.dribbling-home.dribbling)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.dribbling-home.dribbling)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.dribbling, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.dribbling == home.dribbling -->
+                <div class="text-center col-md-12">
+                    <h6>Dribbling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.dribbling, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.dribbling, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.dribbling > home.dribbling -->
+                <div class="text-center col-md-12">
+                    <h6>Dribbling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.dribbling, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.dribbling-home.dribbling)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.dribbling, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.curve < home.curve -->
+                <div class="text-center col-md-12">
+                    <h6>Curve</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.curve, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.curve-home.curve)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.curve-home.curve)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.curve, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.curve == home.curve -->
+                <div class="text-center col-md-12">
+                    <h6>Curve</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.curve, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.curve, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.curve > home.curve -->
+                <div class="text-center col-md-12">
+                    <h6>Curve</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.curve, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.curve-home.curve)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.curve, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.free_kick_accuracy < home.free_kick_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Free kick accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.free_kick_accuracy, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.free_kick_accuracy-home.free_kick_accuracy)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.free_kick_accuracy-home.free_kick_accuracy)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.free_kick_accuracy, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.free_kick_accuracy == home.free_kick_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Free kick accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.free_kick_accuracy, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.free_kick_accuracy, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.free_kick_accuracy > home.free_kick_accuracy -->
+                <div class="text-center col-md-12">
+                    <h6>Free kick accuracy</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.free_kick_accuracy, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.free_kick_accuracy-home.free_kick_accuracy)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.free_kick_accuracy, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.long_passing < home.long_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Long passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.long_passing, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.long_passing-home.long_passing)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.long_passing-home.long_passing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_passing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.long_passing == home.long_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Long passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_passing, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_passing, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.long_passing > home.long_passing -->
+                <div class="text-center col-md-12">
+                    <h6>Long passing</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.long_passing, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.long_passing-home.long_passing)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_passing, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.ball_control < home.ball_control -->
+                <div class="text-center col-md-12">
+                    <h6>Ball control</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.ball_control, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.ball_control-home.ball_control)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.ball_control-home.ball_control)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.ball_control, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.ball_control == home.ball_control -->
+                <div class="text-center col-md-12">
+                    <h6>Ball control</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.ball_control, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.ball_control, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.ball_control > home.ball_control -->
+                <div class="text-center col-md-12">
+                    <h6>Ball control</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.ball_control, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.ball_control-home.ball_control)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.ball_control, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.acceleration < home.acceleration -->
+                <div class="text-center col-md-12">
+                    <h6>Acceleration</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.acceleration, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.acceleration-home.acceleration)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.acceleration-home.acceleration)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.acceleration, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.acceleration == home.acceleration -->
+                <div class="text-center col-md-12">
+                    <h6>Acceleration</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.acceleration, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.acceleration, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.acceleration > home.acceleration -->
+                <div class="text-center col-md-12">
+                    <h6>Acceleration</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.acceleration, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.acceleration-home.acceleration)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.acceleration, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.sprint_speed < home.sprint_speed -->
+                <div class="text-center col-md-12">
+                    <h6>Sprint speed</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.sprint_speed, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.sprint_speed-home.sprint_speed)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.sprint_speed-home.sprint_speed)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sprint_speed, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.sprint_speed == home.sprint_speed -->
+                <div class="text-center col-md-12">
+                    <h6>Sprint speed</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sprint_speed, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sprint_speed, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.sprint_speed > home.sprint_speed -->
+                <div class="text-center col-md-12">
+                    <h6>Sprint speed</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.sprint_speed, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.sprint_speed-home.sprint_speed)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sprint_speed, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.agility < home.agility -->
+                <div class="text-center col-md-12">
+                    <h6>Agility</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.agility, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.agility-home.agility)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.agility-home.agility)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.agility, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.agility == home.agility -->
+                <div class="text-center col-md-12">
+                    <h6>Agility</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.agility, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.agility, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.agility > home.agility -->
+                <div class="text-center col-md-12">
+                    <h6>Agility</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.agility, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.agility-home.agility)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.agility, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.reactions < home.reactions -->
+                <div class="text-center col-md-12">
+                    <h6>Reactions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.reactions, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.reactions-home.reactions)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.reactions-home.reactions)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.reactions, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.reactions == home.reactions -->
+                <div class="text-center col-md-12">
+                    <h6>Reactions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.reactions, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.reactions, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.reactions > home.reactions -->
+                <div class="text-center col-md-12">
+                    <h6>Reactions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.reactions, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.reactions-home.reactions)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.reactions, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.balance < home.balance -->
+                <div class="text-center col-md-12">
+                    <h6>Balance</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.balance, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.balance-home.balance)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.balance-home.balance)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.balance, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.balance == home.balance -->
+                <div class="text-center col-md-12">
+                    <h6>Balance</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.balance, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.balance, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.balance > home.balance -->
+                <div class="text-center col-md-12">
+                    <h6>Balance</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.balance, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.balance-home.balance)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.balance, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.shot_power < home.shot_power -->
+                <div class="text-center col-md-12">
+                    <h6>Shot power</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.shot_power, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.shot_power-home.shot_power)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.shot_power-home.shot_power)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.shot_power, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.shot_power == home.shot_power -->
+                <div class="text-center col-md-12">
+                    <h6>Shot power</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.shot_power, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.shot_power, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.shot_power > home.shot_power -->
+                <div class="text-center col-md-12">
+                    <h6>Shot power</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.shot_power, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.shot_power-home.shot_power)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.shot_power, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.jumping < home.jumping -->
+                <div class="text-center col-md-12">
+                    <h6>Jumping</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.jumping, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.jumping-home.jumping)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.jumping-home.jumping)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.jumping, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.jumping == home.jumping -->
+                <div class="text-center col-md-12">
+                    <h6>Jumping</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.jumping, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.jumping, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.jumping > home.jumping -->
+                <div class="text-center col-md-12">
+                    <h6>Jumping</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.jumping, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.jumping-home.jumping)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.jumping, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.stamina < home.stamina -->
+                <div class="text-center col-md-12">
+                    <h6>Stamina</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.stamina, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.stamina-home.stamina)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.stamina-home.stamina)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.stamina, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.stamina == home.stamina -->
+                <div class="text-center col-md-12">
+                    <h6>Stamina</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.stamina, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.stamina, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.stamina > home.stamina -->
+                <div class="text-center col-md-12">
+                    <h6>Stamina</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.stamina, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.stamina-home.stamina)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.stamina, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.strength < home.strength -->
+                <div class="text-center col-md-12">
+                    <h6>Strength</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.strength, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.strength-home.strength)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.strength-home.strength)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.strength, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.strength == home.strength -->
+                <div class="text-center col-md-12">
+                    <h6>Strength</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.strength, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.strength, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.strength > home.strength -->
+                <div class="text-center col-md-12">
+                    <h6>Strength</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.strength, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.strength-home.strength)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.strength, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.long_shots < home.long_shots -->
+                <div class="text-center col-md-12">
+                    <h6>Long shots</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.long_shots, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.long_shots-home.long_shots)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.long_shots-home.long_shots)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_shots, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.long_shots == home.long_shots -->
+                <div class="text-center col-md-12">
+                    <h6>Long shots</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_shots, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_shots, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.long_shots > home.long_shots -->
+                <div class="text-center col-md-12">
+                    <h6>Long shots</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.long_shots, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.long_shots-home.long_shots)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.long_shots, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.aggression < home.aggression -->
+                <div class="text-center col-md-12">
+                    <h6>Aggression</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.aggression, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.aggression-home.aggression)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.aggression-home.aggression)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.aggression, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.aggression == home.aggression -->
+                <div class="text-center col-md-12">
+                    <h6>Aggression</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.aggression, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.aggression, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.aggression > home.aggression -->
+                <div class="text-center col-md-12">
+                    <h6>Aggression</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.aggression, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.aggression-home.aggression)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.aggression, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.interceptions < home.interceptions -->
+                <div class="text-center col-md-12">
+                    <h6>Interceptions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.interceptions, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.interceptions-home.interceptions)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.interceptions-home.interceptions)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.interceptions, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.interceptions == home.interceptions -->
+                <div class="text-center col-md-12">
+                    <h6>Interceptions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.interceptions, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.interceptions, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.interceptions > home.interceptions -->
+                <div class="text-center col-md-12">
+                    <h6>Interceptions</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.interceptions, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.interceptions-home.interceptions)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.interceptions, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.positioning < home.positioning -->
+                <div class="text-center col-md-12">
+                    <h6>Positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.positioning, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.positioning-home.positioning)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.positioning-home.positioning)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.positioning, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.positioning == home.positioning -->
+                <div class="text-center col-md-12">
+                    <h6>Positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.positioning, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.positioning, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.positioning > home.positioning -->
+                <div class="text-center col-md-12">
+                    <h6>Positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.positioning, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.positioning-home.positioning)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.positioning, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.vision < home.vision -->
+                <div class="text-center col-md-12">
+                    <h6>Vision</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.vision, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.vision-home.vision)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.vision-home.vision)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.vision, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.vision == home.vision -->
+                <div class="text-center col-md-12">
+                    <h6>Vision</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.vision, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.vision, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.vision > home.vision -->
+                <div class="text-center col-md-12">
+                    <h6>Vision</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.vision, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.vision-home.vision)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.vision, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.penalties < home.penalties -->
+                <div class="text-center col-md-12">
+                    <h6>Penalties</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.penalties, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.penalties-home.penalties)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.penalties-home.penalties)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.penalties, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.penalties == home.penalties -->
+                <div class="text-center col-md-12">
+                    <h6>Penalties</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.penalties, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.penalties, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.penalties > home.penalties -->
+                <div class="text-center col-md-12">
+                    <h6>Penalties</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.penalties, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.penalties-home.penalties)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.penalties, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.marking < home.marking -->
+                <div class="text-center col-md-12">
+                    <h6>Marking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.marking, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.marking-home.marking)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.marking-home.marking)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.marking, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.marking == home.marking -->
+                <div class="text-center col-md-12">
+                    <h6>Marking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.marking, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.marking, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.marking > home.marking -->
+                <div class="text-center col-md-12">
+                    <h6>Marking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.marking, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.marking-home.marking)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.marking, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.standing_tackle < home.standing_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Standing tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.standing_tackle, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.standing_tackle-home.standing_tackle)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.standing_tackle-home.standing_tackle)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.standing_tackle, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.standing_tackle == home.standing_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Standing tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.standing_tackle, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.standing_tackle, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.standing_tackle > home.standing_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Standing tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.standing_tackle, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.standing_tackle-home.standing_tackle)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.standing_tackle, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.sliding_tackle < home.sliding_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Sliding tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.sliding_tackle, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.sliding_tackle-home.sliding_tackle)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.sliding_tackle-home.sliding_tackle)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sliding_tackle, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.sliding_tackle == home.sliding_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Sliding tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sliding_tackle, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sliding_tackle, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.sliding_tackle > home.sliding_tackle -->
+                <div class="text-center col-md-12">
+                    <h6>Sliding tackle</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.sliding_tackle, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.sliding_tackle-home.sliding_tackle)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.sliding_tackle, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.gk_diving < home.gk_diving -->
+                <div class="text-center col-md-12">
+                    <h6>GK diving</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_diving, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.gk_diving-home.gk_diving)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.gk_diving-home.gk_diving)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_diving, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_diving == home.gk_diving -->
+                <div class="text-center col-md-12">
+                    <h6>GK diving</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_diving, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_diving, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_diving > home.gk_diving -->
+                <div class="text-center col-md-12">
+                    <h6>GK diving</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_diving, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.gk_diving-home.gk_diving)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_diving, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.gk_handling < home.gk_handling -->
+                <div class="text-center col-md-12">
+                    <h6>GK handling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_handling, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.gk_handling-home.gk_handling)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.gk_handling-home.gk_handling)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_handling, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_handling == home.gk_handling -->
+                <div class="text-center col-md-12">
+                    <h6>GK handling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_handling, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_handling, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_handling > home.gk_handling -->
+                <div class="text-center col-md-12">
+                    <h6>GK handling</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_handling, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.gk_handling-home.gk_handling)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_handling, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-4">
+                <!-- ko if: away.gk_kicking < home.gk_kicking -->
+                <div class="text-center col-md-12">
+                    <h6>GK kicking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_kicking, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.gk_kicking-home.gk_kicking)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.gk_kicking-home.gk_kicking)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_kicking, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_kicking == home.gk_kicking -->
+                <div class="text-center col-md-12">
+                    <h6>GK kicking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_kicking, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_kicking, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_kicking > home.gk_kicking -->
+                <div class="text-center col-md-12">
+                    <h6>GK kicking</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_kicking, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.gk_kicking-home.gk_kicking)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_kicking, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.gk_positioning < home.gk_positioning -->
+                <div class="text-center col-md-12">
+                    <h6>GK positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_positioning, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.gk_positioning-home.gk_positioning)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.gk_positioning-home.gk_positioning)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_positioning, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_positioning == home.gk_positioning -->
+                <div class="text-center col-md-12">
+                    <h6>GK positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_positioning, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_positioning, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_positioning > home.gk_positioning -->
+                <div class="text-center col-md-12">
+                    <h6>GK positioning</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_positioning, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.gk_positioning-home.gk_positioning)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_positioning, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+            <div class="col-md-4">
+                <!-- ko if: away.gk_reflexes < home.gk_reflexes -->
+                <div class="text-center col-md-12">
+                    <h6>GK reflexes</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_reflexes, style:{color: 'red'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: 50+(away.gk_reflexes-home.gk_reflexes)/2 + '%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-danger" role="progressbar" data-bind="style: {width: -(away.gk_reflexes-home.gk_reflexes)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_reflexes, style:{opacity: '0.5'}"></h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_reflexes == home.gk_reflexes -->
+                <div class="text-center col-md-12">
+                    <h6>GK reflexes</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_reflexes, style:{color: 'orange'}" </h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" data-bind="style: {width: '46%', opacity:0}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-warning" role="progressbar" data-bind="style: {width: '8%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_reflexes, style:{color: 'orange'}" </h6>
+                </div>
+                <!-- /ko -->
+                <!-- ko if: away.gk_reflexes > home.gk_reflexes -->
+                <div class="text-center col-md-12">
+                    <h6>GK reflexes</h6>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: home.gk_reflexes, style:{opacity: '0.5'}"></h6>
+                </div>
+                <div class="progress col-md-8">
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%; opacity:0">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active progress-bar-primary" role="progressbar" data-bind="style: {width: (away.gk_reflexes-home.gk_reflexes)/2 + '%'}">
+                    </div>
+                    <div class="progress-bar progress-bar-striped active " role="progressbar" style="width:50%;  opacity:0">
+                    </div>
+                </div>
+                <div class="text-center col-md-2">
+                    <h6 data-bind="text: away.gk_reflexes, style:{color: 'blue'}" </h6>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <!-- /ko -->
+        <!-- /ko -->
+        <br>
+        <br>
+        <div class="clearfix"></div>
+        <!-- ko if:error -->
+        <div class="alert alert-danger" data-bind="html:error"></div>
+        <!-- /ko -->
+        <div class="alert alert-success" data-bind="html:description"></div>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="knockout-3.4.2.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+    <script src="./vsPlayer.js"></script>
+</body>
+
+</html>
