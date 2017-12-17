@@ -34,16 +34,18 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<div class="page-header">
+				<div class="page-header col-md-12">
 					<!-- ko foreach: team -->
 					<!-- ko if: team_fifa_api_id -->
 					<img width="74px" ; data-bind="attr:{src: 'https://cdn.sofifa.org/18/teams/'+team_fifa_api_id+'.png'}"></img>
 					<h1 data-bind="text: team_long_name+' ('+team_short_name+')'"></h1>
+					<a class="btn btn-primary" data-bind="attr:{href: 'compareTeam.html?id='+id}"><i class="fas fa-chart-bar"></i> Comapre team</a>
 					<!-- /ko -->
 					<!-- ko if: !team_fifa_api_id -->
 					<img width="74px" ; data-bind="attr:{src: './img/logo_team.png'}" style="opacity:0.2"></img>
 					<h1 data-bind="text: team_long_name"></h1>
 					<h1 data-bind="text: team_long_name+' ('+team_short_name+')'"></h1>
+					<a class="btn btn-primary" data-bind="attr:{href: 'compareTeam.html?id='+id}"><i class="fas fa-chart-bar"></i> Comapre team</a>
 					<!-- /ko -->
 					<!-- /ko -->
 				</div>
