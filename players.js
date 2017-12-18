@@ -73,7 +73,9 @@ $(document).ready(function () {
             //console.log('CALL: resetPlayers...');
             self.search($("#name").val());
 			self.players(null);
-			self.init();
+			ajaxHelper("http://192.168.160.28/football/api/players?page="+page+"&pageSize=20", 'GET').done(function (data) {
+				self.initPlayers(data);
+			});
         }
 		self.init();		
 	};

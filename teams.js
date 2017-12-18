@@ -77,7 +77,9 @@ $(document).ready(function () {
             //console.log('CALL: resetTeams...');
             self.search($("#name").val());
 			self.teams(null);
-			self.init();
+			ajaxHelper("http://192.168.160.28/football/api/teams?page="+page+"&pageSize=20", 'GET').done(function (data) {
+				self.initTeams(data);
+			});
 		}
 		self.init();
 		
