@@ -73,6 +73,7 @@ $(document).ready(function () {
             //console.log('CALL: resetPlayers...');
             self.search($("#name").val());
 			self.players(null);
+			self.init();
         }
 		self.init();		
 	};

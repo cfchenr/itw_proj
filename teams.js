@@ -36,7 +36,7 @@ $(document).ready(function () {
 
 		self.nextPage = function() {
 			console.log(self.page()+1);
-			ajaxHelper("http://192.168.160.28/football/api/teams?page="+(self.page()+1)+"&pageSize=20", 'GET').done(function (data) {
+			ajaxHelper("http://192.168.160.28/football/api/teams?page="+(self.page()+1)+"&pageSize=200", 'GET').done(function (data) {
 				self.initTeams(data);
 				self.page(self.page()+1);
 				self.reset();
@@ -77,6 +77,7 @@ $(document).ready(function () {
             //console.log('CALL: resetTeams...');
             self.search($("#name").val());
 			self.teams(null);
+			self.init();
 		}
 		self.init();
 		
