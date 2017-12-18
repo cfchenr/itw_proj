@@ -7,6 +7,7 @@ $(document).ready(function () {
 		//---Variáveis locais
 		var self = this;
 		var baseUri = 'http://192.168.160.28/football/api/players/search?srcStr=';
+		var page = 1;
 		self.className = 'Players';
 		self.description = 'This page serves to search players.';
         self.error = ko.observable();

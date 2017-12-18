@@ -7,9 +7,7 @@ $(document).ready(function () {
 		//---Variáveis locais
 		var self = this;
 		var baseUri = 'http://192.168.160.28/football/api/teams/search?srcStr=';
-		var url = window.location.href;
-		var page = url.split("=")[1];
-		if(page == "") page = 1;
+		var page = 1;
 		self.className = 'Teams';
 		self.description = 'This page serves to search teams.';
         self.error = ko.observable();
