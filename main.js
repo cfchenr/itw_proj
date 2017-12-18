@@ -28,6 +28,12 @@ $(document).ready(function () {
 		self.players = ko.observableArray([]);
 		self.teams = ko.observableArray([]);
 
+		var globalTimeout = null;  
+		$('#name').keyup(function(){
+		  if(globalTimeout != null) clearTimeout(globalTimeout);  
+		  globalTimeout =setTimeout(getTeams,1000);  
+		});
+
 		//--- Internal functions
 		function ajaxHelper(uri, method, data) {
 			self.error(''); //Clear error message
